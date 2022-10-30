@@ -1,0 +1,7 @@
+1. myanmar font > utf8_unicode_ci (***best***)
+                  utf8_general_ci
+
+2. Type
+(1) INT (intiger) > only number
+(2) VARCHAR (Variable Character) > text & number (mixed) > words(less)
+(3) TEXT > text & number > words (much)

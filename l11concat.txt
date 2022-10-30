@@ -1,0 +1,50 @@
+=> CONCAT
+
+SELECT CONCAT(colname1,colname2,...) FROM tablename;
+
+------------------------------------------------------------
+
+SELECT CONCAT('Hello','World');
+SELECT CONCAT('Hello'," ",'World');
+SELECT CONCAT('Hello',"...",'World');
+SELECT CONCAT('Hello',"...",'World','',"We are welcome");
+
+SELECT CONCAT('Hello',12345);
+SELECT CONCAT('Hello','12345');
+SELECT CONCAT(10,20);
+
+SELECT * FROM members;
+SELECT CONCAT(firstname,lastname) FROM members;
+SELECT CONCAT(firstname," ",lastname) FROM members;
+SELECT CONCAT(firstname," ",lastname) AS fullname FROM members;
+SELECT CONCAT(firstname," ",lastname) AS fullname,age FROM members;
+
+SELECT firstname AS first, lastname AS last,
+CONCAT(firstname,' ',lastname) AS fullname, age
+FROM members;
+
+SELECT firstname AS first, lastname AS last,
+CONCAT(firstname,',',lastname) AS fullname, age
+FROM members;
+
+SELECT firstname AS first, lastname AS last,
+CONCAT(firstname,'/',lastname) AS fullname, age
+FROM members;
+
+SELECT firstname AS first, lastname AS last,
+CONCAT(firstname,'_',lastname) AS fullname, age
+FROM members;
+
+------------------------------------------------------------
+
+=> CONCAT_WS ( Concat with Separator )
+
+= Syntax
+
+SELECT CONCAT_WS('-',column1,colname2) FROM tablename;
+
+= EXERCISE
+SELECT CONCAT(firstname,'-',lastname) FROM members;
+SELECT CONCAT_WS('-',firstname,lastname) FROM members;
+SELECT CONCAT(firstname,'-',lastname,'-',age) FROM members;
+SELECT CONCAT_WS('-',firstname,lastname,age) FROM members;

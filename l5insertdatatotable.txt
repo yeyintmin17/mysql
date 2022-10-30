@@ -1,0 +1,76 @@
+=> Inset Single Data
+INSERT INTO
+
+Method 1 = Syntax
+
+INSERT INTO tablename (column1, column2, column3, ...)
+VALUE (value1, value2, value3, ...);
+
+Method 2 = Syntax
+
+INSERT INTO tablename
+VALUE (value1, value2, value3, ...);
+
+----------------------------------------------------
+
+= EXERCISE
+
+CREATE TABLE IF NOT EXISTS persons(
+    personid INT,
+    firstname VARCHAR(20),
+    lastname VARCHAR(20),
+    city VARCHAR(15),
+    address VARCHAR(200)
+);
+
+DESC persons;
+
+INSERT INTO persons (personid,firstname,lastname,city,address)
+VALUE (1, 'tin htut', 'aung', 'mandalay', 'no.9,myittar st');
+
+INSERT INTO persons (personid,firstname,lastname,city)
+VALUE (2, 'tin htut', 'aung', 'mandalay');
+
+INSERT INTO persons VALUE (3, 'aung', 'tin htut', 'yangon', 'no 10, thitsar st');
+INSERT INTO persons VALUE (4, 'aung', 'kyaw', 'thitsar', 'yangon');
+INSERT INTO persons VALUE (5, 'aung', 'kyaw', 'no 10, thitsar st', 'yangon');
+INSERT INTO persons VALUE (6, 'maung', 'zaw', NULL, 'no 10, sabal st');
+
+SELECT * FROM persons;
+
+----------------------------------------------------
+
+=> Insert Multi Data
+
+Method 1 = Syntax
+
+INSERT INTO tablename (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...),
+        (value1, value2, value3, ...),
+        ...;
+
+Method 2 = Syntax
+
+INSERT INTO tablename
+VALUES (value1, value2, value3, ...),
+        (value1, value2, value3, ...),
+        ...;
+
+= EXERCISE
+
+INSERT INTO persons (personid,firstname,lastname,city,address)
+VALUE (7,'nu','nu','mandalay','no.19,myittar sit'),
+    (8,'mya','may','mandalay','no.29,myittar sit'),
+    (9,'lu lu','aung','yangon','no.30,myittar sit');
+
+INSERT INTO persons (personid,firstname,lastname,city,address)
+VALUES (10,'yu','yu','mandalay','no.31,myittar sit'),
+    (11,'mya','may','mandalay','no.32,myittar sit'),
+    (12,'htnin','htnin','yangon','no.33,myittar sit');
+
+INSERT INTO persons
+VALUES (13,'pa','pa','mawlamyine','no.19,myittar sit'),
+    (14,'hla','hla','mawlamyine','no.19,myittar sit'),
+    (15,'ma','ma','bago','no.34,myittar sit');
+
+----------------------------------------------------

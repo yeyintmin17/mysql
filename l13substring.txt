@@ -1,0 +1,62 @@
+=> SUBSTRING (Mysql start is 1)
+
+= Syntax =  SUBSTRING();
+SELECT SUBSTRING('text',start,end);
+
+= Syntax =  SUBSTR();
+SELECT SUBSTR('text',start,end);
+
+------------------------------------------------------------
+
+*empty
+SELECT SUBSTRING('Hello World',0,4);
+
+SELECT SUBSTRING('Hello World',1,4);
+SELECT SUBSTRING('Hello World',2,4);
+
+SELECT SUBSTRING('Hello World',7);
+SELECT SUBSTRING('Mysql Online Class',7);
+
+SELECT SUBSTRING('Hello, I am Mr.Anton',1,10);
+
+*error
+SELECT SUBSTRING('Hello, I'm Mr.Anton',1,10);
+
+*solution
+SELECT SUBSTRING("Hello, I'm Mr.Anton",1,10);
+
+*solution
+SELECT SUBSTRING('Hello, I\'m Mr.Anton',1,10);
+
+SELECT SUBSTRING("Hello World",-7);
+SELECT SUBSTRING('Mysql Online Class',-7);
+
+SELECT * FROM persons;
+SELECT SUBSTRING(address,1,10) FROM persons;
+SELECT SUBSTRING(address,1,5) AS street FROM persons;
+SELECT SUBSTRING(address,1,5) AS 'short address' FROM persons;
+
+------------------------------------------------------------
+
+SELECT * FROM persons;
+SELECT SUBSTR(address,1,10) FROM persons;
+SELECT SUBSTR(address,1,5) AS street FROM persons;
+SELECT SUBSTR(address,1,5) AS 'short address' FROM persons;
+
+------------------------------------------------------------
+
+=> SUBSTRING() with CONCAT();
+
+=Syntax
+SELECT CONCAT(SUBSTRING(colname,start,end),'...') FROM tablename;
+
+SELECT CONCAT(SUBSTRING(address,1,7),'...') FROM persons;
+
+SELECT CONCAT(
+    SUBSTRING(address,1,7),'...'
+    ) AS street
+FROM persons;
+
+SELECT CONCAT(SUBSTR(address,1,10),'...') FROM persons;
+
+------------------------------------------------------------

@@ -1,0 +1,23 @@
+=> Aliases ( READ / just result )
+
+= Syntax
+
+SELECT columnname AS aliasname FROM tablename;
+
+------------------------------------------------------------
+
+=EXERCISE
+
+SELECT * FROM members;
+
+SELECT id FROM members;
+SELECT id,firstname FROM members;
+SELECT lastname,id,firstname FROM members;
+
+SELECT id,firstname AS fstname FROM members;
+SELECT id,firstname AS fstname, lastname AS lstname FROM members;
+
+SELECT id,
+firstname AS fstname, 
+lastname AS lstname 
+FROM members;

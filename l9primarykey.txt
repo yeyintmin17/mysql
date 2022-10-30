@@ -1,0 +1,199 @@
+=> PRIMARY KEY
+
+Method 1
+
+CREATE TABLE IF NOT EXISTS persons(
+    id INT NOT NULL PRIMARY KEY,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255),
+    age INT
+);
+
+Method 2
+
+CREATE TABLE IF NOT EXISTS persons(
+    id INT NOT NULL,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255),
+    age INT,
+    PRIMARY KEY (id)
+);
+
+= Exercise
+
+CREATE TABLE IF NOT EXISTS computers(
+    brand VARCHAR(255),
+    type VARCHAR(255)
+);
+
+DESC computers;
+
+INSERT INTO computers (brand, type)
+VALUES ('asus', 'china'),
+        ('asus', 'china');
+
+SELECT * FROM computers;
+
+DROP TABLE IF EXISTS computers;
+
+CREATE TABLE IF NOT EXISTS computers(
+    brand VARCHAR(255),
+    type VARCHAR(255),
+    PRIMARY KEY (brand)
+);
+
+DESC computers;
+SHOW INDEX FROM computers;
+
+*error
+
+INSERT INTO computers (brand, type)
+VALUES ('asus', 'china'),
+        ('asus', 'china');
+
+INSERT INTO computers (brand, type)
+VALUES ('asus', 'china'),
+        ('dell', 'china');
+
+SELECT * FROM computers;
+
+DROP TABLE IF EXISTS computers;
+
+CREATE TABLE IF NOT EXISTS computers(
+    id INT NOT NULL PRIMARY KEY,
+    brand VARCHAR(255),
+    type VARCHAR(255)
+);
+
+DESC computers;
+SHOW INDEX FROM computers;
+
+*error
+INSERT INTO computers (brand, type)
+VALUE ('asus', 'china');
+
+INSERT INTO computers (id, brand, type)
+VALUE (1, 'asus', 'china');
+
+*error
+INSERT INTO computers (id, brand, type)
+VALUE (1, 'asus', 'china');
+
+INSERT INTO computers (id, brand, type)
+VALUE (2, 'acer', 'china');
+
+SELECT * FROM computers;
+DROP TABLE IF EXISTS computers;
+
+CREATE TABLE IF NOT EXISTS computers(
+    id INT NOT NULL AUTO_INCREMENT,
+    brand VARCHAR(255),
+    type VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+DESC computers;
+SHOW INDEX FROM computers;
+
+INSERT INTO computers (brand, type)
+VALUE ('asus', 'china');
+
+*error
+INSERT INTO computers (id, brand, type)
+VALUE (1, 'asus', 'china');
+
+INSERT INTO computers (id, brand, type)
+VALUE (2, 'asus', 'china');
+
+INSERT INTO computers (brand, type)
+VALUE ('acer', 'china');
+
+INSERT INTO computers (id, brand, type)
+VALUE (10, 'hp', 'thai');
+
+INSERT INTO computers (brand, type)
+VALUE ('samsaung', 'korea');
+
+INSERT INTO computers (id,brand, type)
+VALUE (4,'samsaung', 'korea');
+
+INSERT INTO computers (brand, type)
+VALUE ('nokia', 'japan');
+
+SELECT * FROM computers;
+
+CREATE TABLE IF NOT EXISTS members(
+    id INT NOT NULL AUTO_INCREMENT,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    age INT NOT NULL,
+    status VARCHAR(100) NOT NULL DEFAULT "employed",
+    PRIMARY KEY (id)
+);
+
+DESC members;
+SHOW INDEX FROM members;
+
+INSERT INTO members (firstname, lastname, age, status)
+VALUE ("Aye", "Mya", 25, 'employed');
+
+INSERT INTO members (firstname, lastname, age)
+VALUE ("Hnin", "Mya", 25);
+
+INSERT INTO members VALUES (3, 'Yu', 'Ya', 25, 'employed');
+
+*error
+INSERT INTO members VALUES ('Bu', 'Tha', 20);
+
+SELECT * FROM members;
+
+=> Add PRIMARY key
+
+= Method 1 
+
+DESC itaccessories;
+SELECT * FROM itaccessories;
+
+ALTER TABLE itaccessories
+ADD COLUMN id INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
+
+DESC itaccessories;
+SELECT * FROM itaccessories;
+
+SHOW INDEX FROM itaccessories;
+
+ALTER TABLE itaccessories
+DROP COLUMN id;
+
+DESC itaccessories;
+SHOW INDEX FROM itaccessories;
+
+= Method 2
+
+ALTER TABLE itaccessories
+ADD COLUMN id INT NOT NULL AUTO_INCREMENT FIRST,
+ADD PRIMARY KEY(id);
+
+DESC itaccessories;
+SELECT * FROM itaccessories;
+SHOW INDEX FROM itaccessories;
+
+----------------------------------------------------
+
+=> Drop PRIMARY key
+
+DESC itaccessories;
+SELECT * FROM itaccessories;
+SHOW INDEX FROM itaccessories;
+
+*ERROR = we need to remove auto increment (by modify)
+ALTER TABLE itaccessories DROP PRIMARY KEY;
+
+ALTER TABLE itaccessories MODIFY id INT NOT NULL;
+ALTER TABLE itaccessories DROP PRIMARY KEY;
+
+DESC itaccessories;
+SELECT * FROM itaccessories;
+SHOW INDEX FROM itaccessories;
+
+----------------------------------------------------

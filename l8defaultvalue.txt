@@ -1,0 +1,71 @@
+=> Default Value
+
+DESC itaccessories;
+
+CREATE TABLE IF NOT EXISTS mobiles(
+    brand VARCHAR(100),
+    madeby VARCHAR(20) DEFAULT 'china'
+);
+
+DESC mobiles;
+SELECT * FROM mobiles;
+SHOW INDEX FROM mobiles;
+
+INSERT INTO mobiles(brand,madeby)
+VALUE ('samsaung','korea');
+
+INSERT INTO mobiles(brand)
+VALUE ('mi');
+
+INSERT INTO mobiles(madeby)
+VALUE ('japan');
+
+INSERT INTO mobiles()
+VALUE ();
+
+INSERT INTO mobiles
+VALUE ();
+
+SELECT * FROM mobiles;
+
+----------------------------------------------------
+
+= Exercise
+
+CREATE TABLE IF NOT EXISTS vehicles(
+    brand VARCHAR(100) NOT NULL DEFAULT 'unnamed',
+    madeby VARCHAR(20) NOT NULL DEFAULT 'china'
+);
+
+DESC vehicles;
+
+INSERT INTO vehicles (brand,madeby)
+VALUE ('toyota','japan');
+
+INSERT INTO vehicles (brand)
+VALUE ('suzuki');
+
+INSERT INTO vehicles (madeby)
+VALUE ('us');
+
+INSERT INTO vehicles ()
+VALUE ();
+
+INSERT INTO vehicles (brand,madeby)
+VALUE ('toyota',"NULL");
+
+*ERROR
+INSERT INTO vehicles (brand,madeby)
+VALUE ('tokyota',NULL);
+
+*ERROR
+INSERT INTO vehicles (brand,madeby)
+VALUE (NULL,'japan');
+
+*ERROR
+INSERT INTO vehicles (brand,madeby)
+VALUE (NULL,NULL);
+
+SELECT * FROM vehicles;
+
+----------------------------------------------------

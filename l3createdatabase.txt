@@ -1,0 +1,24 @@
+=> Show Databases
+SHOW DATABASES; (to look databases)
+
+=> Create Database
+CREATE DATABASE wdf6797;
+
+=> Delete Database
+DROP DATABASE wdf6797;
+
+=> Choose Database
+USE wdf6797; (database name)
+
+=> About Database Naming
+
+*CAN CREATE 
+CREATE Database book_shop;
+CREATE Database SchoolApp;
+CREATE Database bookingsystem;
+
+*CAN'T CREATE
+*CAN DATABASE My App;
+*CAN DATABASE My$#App;
+
+-----------------------------------------

@@ -1,0 +1,90 @@
+=> Comments
+
+Single Line Commment
+# comment here
+-- comment here
+/* comment here */
+
+Multi Line Comment
+/*
+comment here
+*/
+
+-----------------------------------------------------------------------------
+
+=> Arithemthic Operators (5 types)
+Operator                             Meaning                                    Operate On
++ ( Add )                            Addition                                   Numberic Value
+- ( Subtract )                       Subtraction                                Numberic Value
+* ( Multiply )                       Multiplication                             Numberic Value
+/ ( Divide )                         Division                                   Numberic Value
+% ( Modulus )                        Returns remainder of a adivision           Numberic Value
+
+-----------------------------------------
+
+Exercise Addition Operator = Syantax
+
+SELECT (or) select (Pull answer)
+(; left > error)
+SELECT 10 + 2; # result = 12
+SELECT '10' + 2; # result = 12
+SELECT '10' + '2'; # result = 12
+SELECT '10' + '2';
+SELECT 10+20, 20 + 30; # result = 30 50
+SELECT '100' + '200', '300' + 400; # result = 300 700
+
+SELECT 100 + 'aung aung'; # result = 100
+SELECT '100' + 'aung aung'; # result = 100
+SELECT 'aung aung' + 100; # result = 100
+SELECT 'aung aung' + 'kyaw kyaw'; # result = 0;
+
+Exercise Subtraction Operator = Syantax
+SELECT 10 - 2; # result = 8
+SELECT 20-10, 30 - 15; # result 10, 15
+SELECT '1000'-'500', 500 - '600'; # result 500, -100
+
+Exercise Multiplication Operator = Syantax
+SELECT 10 * 2; # result = 20
+SELECT 5*3, 15 * 5; # result 15, 75
+SELECT '20' * 3, '100' * '5'; # result 60, 500
+
+Exercise Division Operator = Syantax
+SELECT 10 / 2; # result = 5.0000
+SELECT 2/3,3 / 5; # result = 0.6667, 0.6000
+SELECT '100' / 25, '2000' / '2', 12 / 0 #result = 4, 1000, NULL
+
+SELECT 50 / 2; # result = 25
+SELECT 50 DIV 2; # result = 25
+SELECT 50DIV2; # result = error
+SELECT 5 DIV 2, -40 DIV 2, -100 DIV -20; # result = 2, -20, 5
+SELECT '220' DIV 3, 400 DIV '3' # result = 73, 133
+
+Exercise Modulus Operator = Syantax
+
+SELECT 10 % 3; # result = 1
+SELECT 20%3, 30 % 5; # result = 2, 0
+SELECT '20' % 5, '500' % '300'; # result = 0, 200
+
+SELECT 10 % 3; # result = 1
+SELECT 10 MOD 3; # result = 1
+SELECT 5 MOD 2, '60' MOD 2, '70' MOD '5'; # result 1, 0, 0
+SELECT 70 MOD 3, MOD(10,3); # result 1, 1
+
+-----------------------------------------
+
+=> CRUD
+Create / Read / Update / Delete
+
+CREATE DATABASE - creates a new database
+CREATE TBALE - creates a new table
+
+ALTER DATABASE - modifies a database
+ALTER TBALE - modifies a table
+
+DROP DATABASE - delete a database
+DROP TABLE - delete a table
+
+INSERT INTO - inserts new data into a database
+SELECT - extracts data from database
+UPDATE - updates data in a database
+DELETE - deletes data in a database
