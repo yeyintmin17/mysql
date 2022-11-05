@@ -31,3 +31,27 @@ SELECT * FROM persons;
 
 SELECT REPLACE(city,'m','M') FROM persons;
 SELECT REPLACE(city,'m','M') AS capital FROM persons;
+
+SELECT REPLACE(city, 'a', 'A') AS capital FROM persons;
+
+------------------------------------------------------------
+
+REPLACE() width SUBSTRING() and CONCAT()
+
+SELECT SUBSTRING(REPLACE(city,'m','M'),1,5) FROM persons;
+
+SELECT SUBSTRING(
+REPLACE(city,'n','N'),1,5) 
+FROM persons;
+
+SELECT CONCAT(SUBSTR(REPLACE(city,'n','N'),1,5),'...') FROM persons;
+
+SELECT CONCAT(
+SUBSTR(REPLACE(city,'n','N'),1,5),'...') AS street
+FROM persons;
+
+SELECT CONCAT(
+SUBSTR(REPLACE(city,'n','N'),1,5),'...') AS 'short address'
+FROM persons;
+
+------------------------------------------------------------
