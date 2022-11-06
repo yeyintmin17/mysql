@@ -1,0 +1,62 @@
+=> VARIABLES
+
+1. System Variables (default)
+    (i) GLOBAL Variables
+    (ii) SESSION Variables
+
+2. User-Defined Variables
+3. Parameters and Local Variables
+
+@@ - System Variable
+@ - User Defined Variable
+
+------------------------------------------------------------
+
+=> System VARIABLES
+
+SHOW VARIABLES;
+SELECT @@warning_count;
+SELECT @@error_count;
+
+SELECT * FROM persons;
+
+------------------------------------------------------------
+
+=> User-Defined Variables
+
+Method 1 ( Using SELECT )
+
+SELECT @myfirstvar := 'Hello Myanmar';
+SELECT @myfirstvar;
+
+SELECT @myfirstvar := 'Save Myanmar';
+SELECT @myfirstvar;
+
+Method 2 ( Using SET )
+
+SET @mysecondvar = 'Data Land';
+SELECT @mysecondvar;
+
+SET @mysecondvar = 'Hello Thailand';
+SELECT @mysecondvar;
+
+SELECT @num1 := 10;
+SELECT @num2 := 20;
+SELECT @num1;
+SELECT @num2;
+
+SELECT @num1 := 10;
+SELECT @num2 := 20;
+SELECT @num1 + @num2;
+
+SELECT @num1 := '10';
+SELECT @num2 := '20';
+SELECT @num1 + @num2;
+
+SELECT @num1 := 10;
+SELECT @num2 := 20;
+SELECT @num3 := '30';
+SELECT @num4 := '40';
+
+SELECT @num1, @num2, @num3, @num4;
+SELECT @num3 * @num4;
