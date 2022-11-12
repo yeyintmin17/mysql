@@ -1,0 +1,97 @@
+=> AND Syntax
+
+SELECT * FROM tablename
+WHERE condition1 AND condition2 AND condition3...;
+
+CREATE TABLE IF NOT EXISTS customers(
+    id INT NOT NULL,
+    firstname VARCHAR(20) NOT NULL,
+    lastname VARCHAR(20) NOT NULL,
+    age INT,
+    gender VARCHAR(8) NOT NULL DEFAULT 'male',
+    amount INT(12) DEFAULT '0',
+    city VARCHAR(30) NOT NULL,
+    country VARCHAR(30) NOT NULL
+);
+
+ALTER TABLE customers ADD PRIMARY KEY (id);
+
+ALTER TABLE customers
+MODIFY id INT NOT NULL AUTO_INCREMENT;
+
+DESC customers;
+SHOW INDEX FROM customers;
+SELECT * FROM customers;
+
+INSERT INTO customers (firstname, lastname, age, gender, amount, city, country)
+VALUES ('aung', 'aung', 20, 'male', 200000, 'mandalay', 'myanmar'),
+    ('aung', 'kyaw', 30, 'male', 150000, 'yangon', 'myanmar'),
+    ('min', 'min', 18, 'male', 50000, 'bago', 'myanmar'),
+    ('thura', 'kyaw', 32, 'male', 90000, 'mawlamyine', 'myanmar'),
+    ('thuta', 'zaw', 16, 'male', 17000, 'yangon', 'myanmar'),
+    ('zayar', 'aung', 50, 'male', 300000, 'mandalay', 'myanmar'),
+    ('zue', 'zue', 50, 'male', 300000, 'bangkok', 'thailand'),
+    ('tun', 'tun', 30, 'male', 150000, 'chinmaing', 'thailand'),
+    ('zaw', 'zaw', 25, 'male', 800000, 'yanaung', 'thailand'),
+    ('linn', 'linn', 17, 'male', 500000, 'bangkok', 'thailand');
+
+INSERT INTO customers (firstname, lastname, age, gender, amount, city, country)
+VALUES ('su', 'su', 20, 'female', 200000, 'mandalay', 'myanmar'),
+    ('yu', 'yu', 30, 'female', 250000, 'yangon', 'myanmar'),
+    ('nu', 'nu', 18, 'female', 30000, 'bago', 'myanmar'),
+    ('phu', 'phu', 32, 'female', 40000, 'mawlamyine', 'myanmar'),
+    ('hnin', 'hnin', 16, 'female', 27000, 'yangon', 'myanmar'),
+    ('yone', 'yone', 50, 'female', 600000, 'mandalay', 'myanmar'),
+    ('hla', 'hla', 50, 'female', 600000, 'bangkok', 'thailand'),
+    ('mya', 'mya', 30, 'female', 250000, 'chinmaing', 'thailand'),
+    ('aye', 'aye', 25, 'female', 600000, 'yanaung', 'thailand'),
+    ('pwint', 'pwint', 17, 'female', 300000, 'bangkok', 'thailand');
+
+SELECT * FROM customers;
+
+SELECT firstname, lastname, city FROM customers;
+
+SELECT * FROM customers
+WHERE country='myanmar';
+
+SELECT * FROM customers
+WHERE gender='male';
+
+SELECT * FROM customers
+WHERE gender='MALE';
+
+SELECT * FROM customers
+WHERE gender='Male';
+
+SELECT * FROM customers
+WHERE gender='female' AND country="thailand";
+
+SELECT * FROM customers
+WHERE gender='female' AND country="thailand" AND city="bangkok";
+
+=> OR Syntax
+
+SELECT * FROM tablename
+WHERE condition1 OR condition2 OR condition3...;
+
+SELECT * FROM customers
+WHERE city="yangon";
+
+SELECT * FROM customers
+WHERE city="yangon" OR gender="female";
+
+SELECT * FROM customers
+WHERE city="yangon" OR city="bago";
+
+SELECT * FROM customers
+WHERE city="yangon" OR city="bangkok";
+
+*Empty
+SELECT * FROM customers
+WHERE city="yangon" AND city="bangkok";
+
+SELECT * FROM customers
+WHERE city="yangon" OR country="myanmar";
+
+SELECT * FROM customers
+WHERE city="yangon" OR gender="female";
