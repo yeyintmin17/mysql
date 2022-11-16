@@ -69,6 +69,8 @@ WHERE gender='female' AND country="thailand";
 SELECT * FROM customers
 WHERE gender='female' AND country="thailand" AND city="bangkok";
 
+------------------------------------------------------------
+
 => OR Syntax
 
 SELECT * FROM tablename
@@ -95,3 +97,38 @@ WHERE city="yangon" OR country="myanmar";
 
 SELECT * FROM customers
 WHERE city="yangon" OR gender="female";
+
+------------------------------------------------------------
+
+=> NOT Syntax
+
+SELECT * FROM tablename
+WHERE NOT condition1;
+
+SELECT * FROM customers;
+
+SELECT * FROM customers
+WHERE country="myanmar";
+
+SELECT * FROM customers
+WHERE NOT country="myanmar";
+
+SELECT * FROM customers
+WHERE NOT city="yangon";
+
+SELECT * FROM customers;
+
+SELECT * FROM customers
+WHERE country = "myanmar" AND NOT city = "mandalay";
+
+SELECT * FROM customers
+WHERE country = "myanmar" AND NOT city = "yangon" AND NOT city = "mandalay";
+
+SELECT * FROM customers
+WHERE country = "myanmar" AND city = "bago" OR city = "mandalay";
+
+SELECT * FROM customers
+WHERE country = "myanmar" AND ( city = "bago" OR city = "mandalay" );
+
+SELECT * FROM customers
+WHERE country = "myanmar" AND NOT ( city = "bago" OR city = "mandalay" );
