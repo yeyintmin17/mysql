@@ -1,0 +1,24 @@
+=> ORDER By Keyword (Sorting our results)
+
+SELECT col1, col2, col3 ... FROM tablename
+ORDER BY column ASC|DESC;
+
+------------------------------------------------------------
+
+Exercise
+
+SELECT * FROM customers;
+
+SELECT * FROM customers ORDER BY firstname;
+
+SELECT * FROM customers ORDER BY firstname ASC;
+
+SELECT * FROM customers ORDER BY firstname DESC;
+
+SELECT * FROM customers ORDER BY amount;
+
+SELECT * FROM customers ORDER BY amount DESC;
+
+SELECT id, firstname, lastname, amount, city FROM customers
+WHERE amount > 200000
+ORDER BY amount ASC;

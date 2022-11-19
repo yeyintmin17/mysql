@@ -157,3 +157,64 @@ WHERE amount <> '200000';
 
 SELECT id, firstname, lastname, city, amount FROM customers
 WHERE amount LIKE '200000';
+
+------------------------------------------------------------
+
+=> BETWEEN with AND
+
+SELECT * FROM customers;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE amount BETWEEN 200000 AND 300000;
+
+SELECT id, firstname, lastname, age, city FROM customers
+WHERE amount BETWEEN 200000 AND 300000;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE amount BETWEEN 200000 AND 300000 AND city = "mandalay";
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE city = "mandalay" AND amount BETWEEN 200000 AND 300000;
+
+*error
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE city = "mandalay" && amount BETWEEN 200000 && 300000;
+
+=> NOT BETWEEN  with AND
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE amount NOT BETWEEN 200000 AND 300000;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE amount NOT BETWEEN 200000 AND 300000 AND city="yangon";
+
+------------------------------------------------------------
+
+SELECT * FROM customers;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE age = 17;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE age+1 = 18;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE age-5 = 25;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE age*2 > 50;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE amount/2 < 100000;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE age%2 = 0;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE age%2 LIKE 0;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE age%2 != 0;
+
+SELECT id, firstname, lastname, age, amount, city FROM customers
+WHERE age%2 NOT LIKE 0;
