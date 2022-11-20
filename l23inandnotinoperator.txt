@@ -1,0 +1,49 @@
+=> IN / NOT IN operator
+
+=> IN
+SELECT 30 IN (10, 20, 30, 40, 50, 60); # result = 1;
+SELECT 30 IN (100, 200, 300, 400, 500, 600); # result = 0;
+
+=> NOT IN
+SELECT 30 NOT IN (10, 20, 30, 40, 50, 60); # result = 0;
+SELECT 30 NOT IN (100, 200, 300, 400, 500, 600); # result = 1;
+
+=> IN
+SELECT 'aung aung' IN ('maung maung', 'aung aung', 'zaw zaw'); # result = 1;
+SELECT 'aung aung' IN ('maung maung', 'AUNG AUNG', 'zaw zaw'); # result = 1;
+SELECT 'aung aung' IN ('maung maung', 'Aung aung', 'zaw zaw'); # result = 1;
+SELECT 'aung aung' IN ('maung maung', 'Aung Aung', 'zaw zaw'); # result = 1;
+
+SELECT 'aung' IN ('maung maung', 'Aung Aung', 'zaw zaw'); # result = 0;
+
+=> NOT IN
+SELECT 'aung aung' NOT IN ('maung maung', 'aung aung', 'zaw zaw'); # result = 0;
+SELECT 'aung aung' NOT IN ('maung maung', 'AUNG AUNG', 'zaw zaw'); # result = 0;
+SELECT 'aung aung' NOT IN ('maung maung', 'Aung aung', 'zaw zaw'); # result = 0;
+SELECT 'aung aung' NOT IN ('maung maung', 'Aung Aung', 'zaw zaw'); # result = 0;
+
+SELECT 'aung' NOT IN ('maung maung', 'Aung Aung', 'zaw zaw'); # result = 1;
+
+------------------------------------------------------------
+
+Exercise
+
+=> IN
+
+SELECT * FROM customers;
+
+SELECT firstname, lastname, age, city FROM customers
+WHERE city = 'mandalay';
+
+SELECT firstname, lastname, age, city FROM customers
+WHERE city IN ('mandalay');
+
+SELECT firstname, lastname, age, city FROM customers
+WHERE city = 'mandalay' OR city = 'yangon';
+
+SELECT firstname, lastname, age, city FROM customers
+WHERE city IN ('mandalay', 'yangon');
+
+SELECT firstname, lastname, age, city FROM customers
+WHERE city IN ('mandalay', 'yangon')
+ORDER BY city ASC;
