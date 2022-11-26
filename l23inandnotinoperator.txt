@@ -47,3 +47,26 @@ WHERE city IN ('mandalay', 'yangon');
 SELECT firstname, lastname, age, city FROM customers
 WHERE city IN ('mandalay', 'yangon')
 ORDER BY city ASC;
+
+=> NOT IN
+
+SELECT * FROM customers;
+
+SELECT * FROM customers
+WHERE city = "mandalay";
+
+SELECT * FROM customers
+WHERE city IN ("mandalay");
+
+SELECT * FROM customers
+WHERE city != "mandalay";
+
+SELECT * FROM customers
+WHERE city NOT IN ("mandalay");
+
+SELECT * FROM customers
+WHERE city NOT IN ("mandalay", "yangon");
+
+SELECT * FROM customers
+WHERE city NOT IN ("mandalay", "yangon")
+ORDER BY city DESC;
