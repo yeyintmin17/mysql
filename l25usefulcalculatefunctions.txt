@@ -1,0 +1,64 @@
+=> MySQL -> COUNT(), AVG(), SUM(), MIN(), MAX( Aggregate Functions )
+
+= Syntax = COUNT()
+
+SELECT COUNT(column) FROM tablename
+WHERE condition;
+
+= Syntax = AVG()
+
+SELECT AVG(column) FROM tablename
+WHERE condition;
+
+= Syntax = SUM()
+
+SELECT SUM(column) FROM tablename
+WHERE condition;
+
+= Syntax = MIN()
+
+SELECT MIN(column) FROM tablename
+WHERE condition;
+
+= Syntax = MAX()
+
+SELECT MAX(column) FROM tablename
+WHERE condition;
+
+------------------------------------------------------------
+
+= EXERCISE
+
+SELECT COUNT(amount) FROM customers
+WHERE amount > 300000;
+
+SELECT * FROM customers
+WHERE firstname = "aung";
+
+SELECT COUNT(*) FROM customers
+WHERE firstname = "aung";
+
+SELECT COUNT(id) FROM customers
+WHERE firstname = "aung";
+
+=> SUM()
+
+SELECT SUM(amount) FROM customers
+WHERE amount > 300000;
+
+SELECT * FROM customers
+WHERE city = 'mandalay';
+
+SELECT SUM(amount) FROM customers
+WHERE city = 'mandalay';
+
+=> AVG()
+
+SELECT * FROM customers
+WHERE city = 'yangon';
+
+SELECT AVG(age) FROM customers
+WHERE city = 'yangon';
+
+SELECT AVG(amount) FROM customers
+WHERE city = 'yangon';
