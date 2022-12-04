@@ -1,0 +1,30 @@
+=> Data Types ( Base on Version 8.0 )
+
+* Numeric Data Types ( types )
+
+Data Types                              Description
+# OTP
+1. BIT(size)
+
+# true or false (1 or 0)
+2. BOOL
+3. BOOLEAN
+
+4. TINYINT(size)
+5. SMALLINT(size)
+6. MEDIUMINT(size)
+7. INT
+8. INTERGET(size)
+9. BITINT(size)
+
+10. DECIMAL(size,d)
+11. DEC(size,d)
+12. FLOAT(size,d)
+13. FLOAT(p)
+14. DOUBLE(size,d) (more digit)
+
+(d = decimal point)
+(p = float point)
+
+NOTE : DECIMAL for Finance ( such as money )
+        FLOAT & DOUBLE for science app

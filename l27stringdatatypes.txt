@@ -1,0 +1,32 @@
+=> Data Types ( Base on Version 8.0 )
+
+* String Data Types ( types )
+
+Data Types                              Description
+1. CHAR(size)
+2. VARCHAR(size)
+3. TEXT
+4. TINYTEXT
+5. MEDIUMTEXT
+6. LONGTEXT
+
+7. BINARY (size)
+8. VARBINARY ()
+9. TINYBLOB
+10. BLOB()
+11. MEDIUMBLOB
+12. LONGBLOB
+
+13. ENUM('val1', 'val2', 'val3', ...) (Only One)
+14. SET('val1', 'val2', 'val3', ...) (Multi)
+
+bit
+byte
+kb
+mb
+gb
+tb
+..
+...
+....
+.....
