@@ -3,28 +3,34 @@
 * Numeric Data Types ( types )
 
 Data Types                              Description
-# OTP
-1. BIT(size)
+
+# OTP                                   
+1. BIT(size)                            A bit value type. from 1 to 64. The default value for size is 1
 
 # true or false (1 or 0)
-2. BOOL
-3. BOOLEAN
+2. BOOL                                 Zero is considered as false, Non-Zero values are conisdered as true
+3. BOOLEAN                              Equal to BOOL
 
-4. TINYINT(size)
-5. SMALLINT(size)
-6. MEDIUMINT(size)
-7. INT
-8. INTERGET(size)
-9. BITINT(size)
+4. TINYINT(size)                        A very small integer. Sined range is from -128 to 127. Unsined range is 0 to 255.
+5. SMALLINT(size)                       A small integer. Sined range is from -32768 to 32767. Unsined range is 0 to 65535.
+6. MEDIUMINT(size)                      A medium integer. Sined range is from -8388608 to 8388607. Unsined range is 0 to 16777215
+7. INT                                  Sined range is from -214748648 to 214748647. Unsined range is 0 to 4294967295
+8. INTERGET(size)                       Equal to INT
+9. BITINT(size)                         A large integer.
 
-10. DECIMAL(size,d)
-11. DEC(size,d)
-12. FLOAT(size,d)
-13. FLOAT(p)
-14. DOUBLE(size,d) (more digit)
+10. DECIMAL(size,d)                     AN exact fixed-point number. The default value for dis 0.
+eg(999.99) is 5 digits and 2 decimal digits
+11. DEC(size,d)                         Equal DECIMAL(size, d)
+
+12. FLOAT(size,d)                       A floating point number (Approximate Value)
+13. FLOAT(p)                            A floating point number (Approximate Value). p is optional. p is from 0 to 24
+# more digit
+14. DOUBLE(size,d)                      p is optional. p is from 25 to 53.
 
 (d = decimal point)
 (p = float point)
 
 NOTE : DECIMAL for Finance ( such as money )
         FLOAT & DOUBLE for science app
+
+------------------------------------------------------------

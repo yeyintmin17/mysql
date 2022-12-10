@@ -1,0 +1,11 @@
+=> Data Types ( Base on Version 8.0 )
+
+* Date Data Types ( types )
+
+Data Types                              Description
+
+1. DATE                                 A date. Format : YYYY-MM-DD. The supporred range from '1000-01-01 to 9999-12-31'
+2. DATETIME                             A date and time comination Format : YYYY-MM-DD hh:mm:ss. The supporred range from '1000-01-01 00:00:00 to 9999-12-31 23:59:59'
+3. TIMESTAMP                            A timestamp. Format : YYYY-MM-DD hh:mm:ss. CURRENT_TIMESTAMP
+4. TIME                                 A time. Format : hh:mm:ss
+5. YEAR                                 A year with four-digit format.
