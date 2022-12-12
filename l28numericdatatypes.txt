@@ -34,3 +34,31 @@ NOTE : DECIMAL for Finance ( such as money )
         FLOAT & DOUBLE for science app
 
 ------------------------------------------------------------
+
+= EXERCISE
+
+CREATE TABLE IF NOT EXISTS items(
+        name VARCHAR(20),
+        price INT(11),
+        status BOOL
+)
+
+DESC items;
+
+INSERT INTO items(name, price)
+VALUES ('water', 100),
+        ('coffee', 500),
+        ('cake', 800),
+        ('snack', 250.56),
+        ('jam', 1000);
+
+SELECT * FROM items;
+
+INSERT INTO items(name, price, status)
+VALUES ('water', 100, 0),
+        ('coffee', 500, 1),
+        ('cake', 800, 0),
+        ('snack', 250.56, 1),
+        ('jam', 1000, 0);
+
+SELECT * FROM items;

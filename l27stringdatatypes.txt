@@ -3,22 +3,22 @@
 * String Data Types ( types )
 
 Data Types                              Description
-1. CHAR(size)
-2. VARCHAR(size)
-3. TEXT
-4. TINYTEXT
-5. MEDIUMTEXT
-6. LONGTEXT
+1. CHAR(size) 0 to 255                  A Fixed Length String. (can contain letters, numbers and special)
+2. VARCHAR(size) 0 to 255               A Variable Length String. (can contain letters, numbers and special)
+3. TEXT                                 Hold a string with maximum size 68,xxx (65kg)
+4. TINYTEXT                             Hold a string with maximum size 255 (255 bytes)
+5. MEDIUMTEXT                           Hold a string with maximum size 16, xxx, xxx (16mb)
+6. LONGTEXT                             Hold a string with maximum size 4, xxx, xxx, xxx (4gb)
 
-7. BINARY (size)
-8. VARBINARY ()
-9. TINYBLOB
-10. BLOB()
-11. MEDIUMBLOB
-12. LONGBLOB
+7. BINARY(size)                         Equal to CHAR() , but stores binary byte string.
+8. VARBINARY()                          Equal to VARCHAR(), but stores binary byte string.
+9. TINYBLOB                             For BLOBS(Binary Large Objects). Max Size (255bytes)
+10. BLOB()                              For BLOBS(Binary Large Objects). maximum size 68, xxx (65kb)
+11. MEDIUMBLOB                          For BLOBS(Binary Large Objects). maximum size 16, xxx, xxx (65mb)
+12. LONGBLOB                            For BLOBS(Binary Large Objects). maximum size 4, xxx, xxx, xxx (4gb)
 
-13. ENUM('val1', 'val2', 'val3', ...) (Only One)
-14. SET('val1', 'val2', 'val3', ...) (Multi)
+13. ENUM('val1', 'val2', 'val3', ...)   A string object that can have only value, chose form a list of possible value.
+14. SET('val1', 'val2', 'val3', ...)    A string object that can have 1 or more values, chose form a list of possible value.
 
 bit
 byte
@@ -30,3 +30,41 @@ tb
 ...
 ....
 .....
+
+=> CHAR
+* CHAR is faster for fixed length text
+eg. telephone numbers, zip code, Yes/No Y/N, Male/Female M/Female
+
+CHAR(4) VS VARCHAR(4)
+
+value       CHAR(4)     Storage     VARCHAR(4)      Storage
+''          '    '      4 bytes     ''              1 byte
+'ab'        'ab  '      4 bytes     'ab'            3 bytes
+'abcd'      'abcd'      4 bytes     'abcd'          5 bytes
+'abcdefg'   'abcd'      4 bytes     'abcd'          5 bytes
+
+------------------------------------------------------------
+
+= EXERCISE
+
+CREATE TABLE IF NOT EXISTS contacts(
+    name CHAR(5),
+    city VARCHAR(10)
+);
+
+DESC contacts;
+
+*error
+INSERT INTO contacts(name, city)
+VALUES ('aung aung', 'mandalay city'),
+        ('tar gyi', 'mawlamyine city'),
+        ('kyaw gyi', 'yangon city'),
+        ('su su', 'bago city'),
+        ('hla hla', 'pyioolwin city');
+
+INSERT INTO contacts(name, city)
+VALUES ('aung', 'mandalay'),
+        ('tar', 'mawlamyine'),
+        ('kyaw', 'yangon'),
+        ('su', 'bago'),
+        ('hla', 'pyioolwin');
