@@ -62,3 +62,111 @@ VALUES ('water', 100, 0),
         ('jam', 1000, 0);
 
 SELECT * FROM items;
+
+INSERT INTO items(name, price, status)
+VALUES ('water', 100, 0),
+        ('coffee', -500, 1),
+        ('cake', -800, 0),
+        ('snack', -250.56, 1),
+        ('jam', -1000, 0);
+
+SELECT * FROM items;
+
+DROP TABLE IF EXISTS items;
+
+CREATE TABLE IF NOT EXISTS items(
+        name VARCHAR(20),
+        purchaseprice INT(4) SIGNED,
+        sellprice INT(4) UNSINED,
+        status BOOL
+)
+
+DESC items;
+
+INSERT INTO items(name, purchaseprice, sellprice, status)
+VALUES ('water', 9000, 9500, 0),
+        ('coffee', -100, 200, 1),
+        ('cake', 800, 100, 0),
+        ('snack', -250.56, 350.77, 1),
+        ('jam', -1000, 2000, 0);
+
+SELECT * FROM items;
+
+INSERT INTO items(name, purchaseprice, sellprice, status)
+VALUES ('water', 10000, 11000, 0),
+        ('coffee', -100, 200, 1);
+
+SELECT * FROM items;
+
+INSERT INTO items(name, purchaseprice, sellprice, status)
+VALUES ('water', 10000, -11000, 0),
+        ('coffee', -100, 200, 1);
+
+SELECT * FROM items;
+
+------------------------------------------------------------
+
+number data type
+
+integer         fixed-point     VS      floating-point
+INTEGER         DECIMAL                 FLOAT/DOUBLE
+
+DECIMAL(5,2) DECIMAL(Total Number of Digits, Digits after decimal)
+eg (999.99) is 5 digits and 2 decimal digits
+
+fixed-point data type
+DECIMAL(5, 3) = 20.234
+20.5 = 20.500
+20.52354 = 20.524 (warning)
+
+DROP TABLE IF EXISTS items;
+
+CREATE TABLE IF NOT EXISTS items(
+        name VARCHAR(20),
+        price DECIMAL(6, 2)
+);
+
+DESC items;
+
+#result 500.00
+INSERT INTO items(name, price)
+VALUE('water', 500);
+
+#result 100.43
+INSERT INTO items(name, price)
+VALUE('coffee', 100.43);
+
+#result 100.99
+INSERT INTO items(name, price)
+VALUE('redbull', 100.99);
+
+#result 100.99
+INSERT INTO items(name, price)
+VALUE('redbull', 100.9948);
+
+#result 101.00
+INSERT INTO items(name, price)
+VALUE('redbull', 100.998);
+
+#result 100.35
+INSERT INTO items(name, price)
+VALUE('redbull', 100.3456);
+
+#result 551.00
+INSERT INTO items(name, price)
+VALUE('redbull', 550.9999);
+
+#result 1000.00
+INSERT INTO items(name, price)
+VALUE('redbull', 1000);
+
+#result error
+INSERT INTO items(name, price)
+VALUE('redbull', 100000);
+
+SELECT * FROM items;
+
+FLOAT() VS DOUBLE()
+
+Note: DECIMAL data type is a fixed-point type and calculate are exact
+Note: FLOAT & DOUBLE data type are floating-point types and calculate are approximate.
