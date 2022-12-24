@@ -170,3 +170,78 @@ FLOAT() VS DOUBLE()
 
 Note: DECIMAL data type is a fixed-point type and calculate are exact
 Note: FLOAT & DOUBLE data type are floating-point types and calculate are approximate.
+
+CREATE TABLE IF NOT EXISTS shoppings(
+        name VARCHAR(20),
+        purchaseprice FLOAT,
+        sellprice FLOAT(4)
+);
+
+DESC shoppings;
+
+INSERT INTO shoppings(name, purchaseprice, sellprice)
+VALUES ('water', 100, 100),
+        ('coffee', 500, 500.34),
+        ('cake', 800, 800.56),
+        ('snack', 250, 250.889),
+        ('jam', 9000, 10000);
+
+# result = 112233
+INSERT INTO shoppings(name, purchaseprice, sellprice)
+VALUES ('brands birdnest', 112233.45, 112233.45);
+
+# result = 11223300
+INSERT INTO shoppings(name, purchaseprice, sellprice)
+VALUES ('brands birdnest', 11223344.45, 11223344.45);
+
+# result = 1122330000
+INSERT INTO shoppings(name, purchaseprice, sellprice)
+VALUES ('brands birdnest', 1122334455.45, 1122334455.45);
+
+SELECT * FROM shoppings;
+
+------------------------------------------------------------
+
+=> FLOAT VS DOUBLE
+
+CREATE TABLE IF NOT EXISTS buyings(
+        name VARCHAR(20),
+        purchaseprice FLOAT,
+        sellprice DOUBLE
+)
+
+DESC buyings;
+
+INSERT INTO buyings(name, purchaseprice, sellprice)
+VALUES ('water', 100, 100),
+        ('coffee', 500.34, 500.34),
+        ('cake', 800.56, 800.56),
+        ('snack', 250.889, 250.889),
+        ('jam', 10000, 10000);
+
+# result = 112233 112233.45
+INSERT INTO buyings(name, purchaseprice, sellprice)
+VALUES ('brands birdnest', 112233.45, 112233.45);
+
+# result = 11223300 11223344.45
+INSERT INTO buyings(name, purchaseprice, sellprice)
+VALUES ('brands birdnest', 11223344.45, 11223344.45);
+
+# result = 1122330000 1122334455.45
+INSERT INTO buyings(name, purchaseprice, sellprice)
+VALUES ('brands birdnest', 1122334455.45, 1122334455.45);
+
+# result = 1.12233e15 1122334455667788.5
+INSERT INTO buyings(name, purchaseprice, sellprice)
+VALUES ('brands birdnest', 1122334455667788.45, 1122334455667788.45);
+
+# result = 1.12233e17 1.122334455667789e17
+INSERT INTO buyings(name, purchaseprice, sellprice)
+VALUES ('brands birdnest', 112233445566778899.45, 112233445566778899.45);
+
+SELECT * FROM buyings;
+
+=> About e/E
+HTML input  number type allow 'e/E' buz 'e' stands for exponential(exponent) which is a numberic symbol.
+Eg , 200000 can also be written as 2e5 . (3e4 = 3x10^4 = 30000)
+^ = hat (call CARET or HAT)
