@@ -9,3 +9,58 @@ Data Types                              Description
 3. TIMESTAMP                            A timestamp. Format : YYYY-MM-DD hh:mm:ss. CURRENT_TIMESTAMP
 4. TIME                                 A time. Format : hh:mm:ss
 5. YEAR                                 A year with four-digit format.
+
+------------------------------------------------------------
+
+Eg: Get current date (2023-01-01)
+SELECT CURRENT_DATE();
+SELECT CURDATE();
+
+Eg: Get current time
+SELECT CURRENT_TIME();
+SELECT CURTIME();
+
+Eg: Get current datetime(2023-01-01 07:00:00)
+SELECT NOW();
+SELECT CURRENT_TIMESTAMP();
+SELECT CURRENT_TIMESTAMP
+SELECT SYSDATE();
+
+=> INTERVAL
+
+SELECT NOW(), NOW() - INTERVAL 1 YEAR; #
+SELECT NOW() - INTERVAL 1 YEAR;
+SELECT NOW(), NOW() - INTERVAL 2 YEAR;
+
+SELECT NOW(), NOW() - INTERVAL 1 MONTH;
+SELECT NOW(), NOW() - INTERVAL 12 MONTH;
+SELECT NOW(), NOW() + INTERVAL 1 MONTH;
+
+SELECT NOW(), NOW() - INTERVAL 1 WEEK;
+
+SELECT NOW(), NOW() - INTERVAL 1 DAY;
+
+SELECT NOW(), NOW() - INTERVAL 1 HOUR;
+SELECT NOW(), NOW() - INTERVAL 1 MINUTE;
+SELECT NOW(), NOW() - INTERVAL 1 SECOND;
+SELECT NOW(), NOW() - INTERVAL 1 MICROSECOND;
+
+------------------------------------------------------------
+
+=> LAST_DAY();
+SELECT LAST_DAY(NOW());
+SELECT LAST_DAY(CURRENT_DATE());
+SELECT LAST_DAY(CURDATE());
+SELECT LAST_DAY(CURRENT_TIMESTAMP);
+
+=> DAY();
+SELECT DAY(NOW());
+
+SELECT DAY(LAST_DAY(NOW()));
+SELECT DAY(LAST_DAY(CURRENT_DATE()));
+SELECT DAY(LAST_DAY(CURDATE()));
+SELECT DAY(LAST_DAY(CURRENT_TIMESTAMP));
+
+SELECT NOW() - INTERVAL 1 MONTH;
+SELECT LAST_DAY(NOW() - INTERVAL 1 MONTH);
+SELECT LAST_DAY(NOW() - INTERVAL 2 MONTH);
