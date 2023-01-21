@@ -145,3 +145,40 @@ VALUES ('aung aung', '2000-02-20', '10:12:59', '2000', 'mawlamyine'),
     ('hla hla', '2000-12-01', '22:12:59', 2000, 'yangon');
 
 SELECT * FROM students;
+
+SELECT name, birthdate FROM students;
+SELECT name, birthdate, DAY(birthdate) FROM students;
+SELECT name, birthdate, DAYNAME(birthdate) FROM students;
+
+# Note: 1 = sunday, 2 = monday, 3 = tuesday, 4 = wednesday, 5 = thursday, 6 = friday, 7 = saturday
+SELECT name, birthdate, DAYOFWEEK(birthdate) FROM students;
+SELECT name, birthdate, DAYOFYEAR(birthdate) FROM students;
+
+SELECT name, birthdate, MONTH(birthdate) FROM students;
+SELECT name, birthdate, MONTHNAME(birthdate) FROM students;
+
+SELECT name, birthdate, YEAR(birthdate) FROM students;
+
+SELECT name, birthtime, HOUR(birthtime) FROM students;
+SELECT name, birthtime, MINUTE(birthtime) FROM students;
+SELECT name, birthtime, SECOND(birthtime) FROM students;
+
+#Eg = 2023-January-21
+SELECT CONCAT(YEAR(birthdate), '-', MONTHNAME(birthdate), '-', DAY(birthdate)) FROM students;
+
+#Eg = January 21 2023
+SELECT CONCAT(MONTHNAME(birthdate), ' ', DAY(birthdate), ' ', YEAR(birthdate)) FROM students;
+
+=> BETWEEN with AMD
+SELECT name, birthdate FROM students;
+SELECT name, birthdate FROM students
+WHERE birthdate BETWEEN '2000-01-01' AND '2002-12-31';
+
+SELECT name, birthdate FROM students
+WHERE YEAR(birthdate) BETWEEN '2000' AND '2002';
+
+SELECT name, birthdate, city FROM students
+WHERE YEAR(birthdate) BETWEEN 2000 AND 2002 AND city IN('mawlamyine', 'bago');
+
+SELECT name, birthdate FROM students
+WHERE MONTH(birthdate) <= 4;
