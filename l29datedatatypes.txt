@@ -182,3 +182,65 @@ WHERE YEAR(birthdate) BETWEEN 2000 AND 2002 AND city IN('mawlamyine', 'bago');
 
 SELECT name, birthdate FROM students
 WHERE MONTH(birthdate) <= 4;
+
+# Exercise DATE_ADD() / ADDDATE()
+
+SELECT name, birthdate FROM students;
+SELECT name, birthdate, birthdate + INTERVAL 1 MONTH FROM students;
+SELECT name, birthdate, (birthdate + INTERVAL 1 MONTH) FROM students;
+SELECT name, birthdate, (birthdate+INTERVAL 1 MONTH) FROM students;
+SELECT name, birthdate, (birthdate + INTERVAL 1 MONTH) FROM students;
+
+SELECT name, birthdate, DATE_ADD(birthdate, INTERVAL 1 MONTH) FROM students;
+SELECT name, birthdate, ADDDATE(birthdate, INTERVAL 1 MONTH) FROM students;
+SELECT name, birthdate, DATE_ADD(birthdate, INTERVAL 30 DAY) FROM students;
+
+1 QUARTER = 3 MONTH
+SELECT name, birthdate, DATE_ADD(birthdate, INTERVAL 1 QUARTER) FROM students;
+SELECT name, birthdate, DATE_ADD(birthdate, INTERVAL 2 QUARTER) FROM students;
+SELECT name, birthdate, DATE_ADD(birthdate, INTERVAL 3 QUARTER) FROM students;
+SELECT name, birthdate, DATE_ADD(birthdate, INTERVAL 4 QUARTER) FROM students;
+
+SELECT name, birthtime, DATE_ADD(birthtime, INTERVAL 20 SECOND) FROM students;
+SELECT name, birthdate, birthtime, DATE_ADD(birthdate, INTERVAL 20 MINUTE) FROM students;
+
+SELECT name, birthdate, birthtime, (birthdate + INTERVAL 1 MONTH) FROM students;
+SELECT name, birthdate, birthtime, (birthdate + INTERVAL 1 MONTH + INTERVAL 10 HOUR) FROM students;
+SELECT name, birthdate, birthtime, (birthdate + INTERVAL 1 MONTH + INTERVAL 10 HOUR + INTERVAL 25 MINUTE) FROM students;
+SELECT name, birthdate, birthtime, (birthdate + INTERVAL 1 MONTH + INTERVAL 10 HOUR + INTERVAL 25 MINUTE + INTERVAL 50 SECOND) FROM students;
+SELECT name, CONCAT(birthdate, ' ', birthtime) AS 'Date Time', (birthdate + INTERVAL 1 MONTH + INTERVAL 10 HOUR + INTERVAL 25 MINUTE) AS 'NEW DATE TIME ' FROM students;
+
+------------------------------------------------------------
+
+# Exercise TIMESTAMP
+
+CREATE TABLE IF NOT EXISTS comments(
+    content VARCHAR(100),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+DESC comments;
+
+INSERT INTO comments(content)
+VALUES ('this i s so funny'),
+    ('how sweet'),
+    ('how wonderful'),
+    ('pretty good');
+
+SELECT * FROM comments;
+
+INSERT INTO comments(content)
+VALUES ('hello how are you'),
+    ('so nice'),
+    ('so sweet'),
+    ('it is amazing');
+
+SELECT * FROM comments;
+
+INSERT INTO comments(content)
+VALUES ('why so cute'),
+    ('waiting next'),
+    ('so beautiful'),
+    ('woww');
+
+SELECT * FROM comments;
