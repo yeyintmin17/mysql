@@ -68,3 +68,38 @@ VALUES ('aung', 'mandalay'),
         ('kyaw', 'yangon'),
         ('su', 'bago'),
         ('hla', 'pyioolwin');
+
+------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS mytasks(
+        id INT DEFAULT 10,
+        content VARCHAR(50)
+);
+
+DESC mytasks;
+
+INSERT INTO mytasks (content) VALUES ('have to cook'), ('have to shop');
+
+SELECT * FROM mytasks;
+
+# error
+CREATE TABLE IF NOT EXISTS myjobs(
+        id INT,
+        content VARCHAR(5) DEFAULT ('nothing to show')
+);
+
+SHOW COLUMNS FROM myjobs;
+
+# error
+INSERT INTO myjobs (content) VALUE ('have to read');
+
+INSERT INTO myjobs (content) VALUE ('read');
+
+INSERT INTO myjobs (content) VALUE ('cook');
+
+# error = Data too long for column 'content' at row1
+INSERT INTO myjobs (id) VALUE (1);
+
+INSERT INTO myjobs(id, content) VALUE (1, 'shop');
+
+SELECT * FROM myjobs;

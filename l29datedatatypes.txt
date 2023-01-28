@@ -244,3 +244,66 @@ VALUES ('why so cute'),
     ('woww');
 
 SELECT * FROM comments;
+
+------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS feedbacks(
+    content VARCHAR(100),
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+DESC feedbacks;
+
+INSERT INTO feedbacks (content)
+VALUES ('this is so funny'), ('how sweet'), ('how wonderful'), ('pretty good');
+
+INSERT INTO feedbacks (content)
+VALUES ('hello how are you'), ('so nice'), ('so sweet'), ('it is amazing');
+
+INSERT INTO feedbacks (content)
+VALUES ('why so cute'), ('waiting next'), ('so beautiful'), ('wowww');
+
+SELECT * FROM feedbacks;
+
+UPDATE feedbacks SET content = "Bleh...Bleh..Bleh..."
+WHERE content = 'how sweet';
+
+SELECT * FROM feedbacks;
+
+DROP TABLE IF EXISTS feedbacks;
+
+CREATE TABLE IF NOT EXISTS feedbacks(
+    content VARCHAR(100),
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW() ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS feedbacks(
+    content VARCHAR(100),
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+DESC feedbacks;
+
+INSERT INTO feedbacks (content)
+VALUES ('this is so funny'), ('how sweet'), ('how wonderful'), ('pretty good');
+
+INSERT INTO feedbacks (content)
+VALUES ('hello how are you'), ('so nice'), ('so sweet'), ('it is amazing');
+
+INSERT INTO feedbacks (content)
+VALUES ('why so cute'), ('waiting next'), ('so beautiful'), ('wowww');
+
+SELECT * FROM feedbacks;
+
+UPDATE feedbacks SET content = "Bleh...Bleh...Bleh..."
+WHERE content = 'how sweet';
+
+SELECT * FROM feedbacks;
+
+UPDATE feedbacks SET content = "good job"
+WHERE content = "Bleh...Bleh...Bleh...";
+
+SELECT * FROM feedbacks;
