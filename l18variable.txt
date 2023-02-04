@@ -60,3 +60,43 @@ SELECT @num4 := '40';
 
 SELECT @num1, @num2, @num3, @num4;
 SELECT @num3 * @num4;
+
+SELECT @num1 :=  10;
+SELECT @num2 := 20;
+SELECT @num3 := '30';
+SELECT @num4 := '40';
+SELECT @num1 as numberone, @num2 AS numbertwo;
+
+SELECT @num1 :=  10;
+SELECT @num2 := 20;
+SELECT @num3 := '30';
+SELECT @num4 := '40';
+SELECT @num1 as numberone, @num2 AS numbertwo, @num3, @num4;
+
+SELECT @num1 :=  10;
+SELECT @num2 := 20;
+SELECT @num3 := '30';
+SELECT @num4 := '40';
+SELECT @num1 as numberone, @num2 AS numbertwo, @num3 + @num4;
+
+SELECT @num1 :=  10;
+SELECT @num2 := 20;
+SELECT @num3 := '30';
+SELECT @num4 := '40';
+SELECT @num1 as numberone, @num2 AS numbertwo, @num5 := @num3 + @num4;
+
+SELECT @num1 :=  10;
+SELECT @num2 := 20;
+SELECT @num3 := '30';
+SELECT @num4 := '40';
+SELECT @num1 as numberone, @num2 AS numbertwo, @num5 := @num3 + @num4 AS number5;
+
+SELECT * FROM customers;
+
+SELECT id, firstname, lastname, age, city FROM customers
+WHERE age > 20;
+
+SELECT @num2 := 20;
+SELECT id, firstname, lastname, age, city FROM customers
+WHERE age > @num2;
+
