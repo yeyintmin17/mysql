@@ -23,7 +23,7 @@ SELECT CURTIME();
 Eg: Get current datetime(2023-01-01 07:00:00)
 SELECT NOW();
 SELECT CURRENT_TIMESTAMP();
-SELECT CURRENT_TIMESTAMP
+SELECT CURRENT_TIMESTAMP;
 SELECT SYSDATE();
 
 => INTERVAL
@@ -202,7 +202,7 @@ SELECT name, birthdate, DATE_ADD(birthdate, INTERVAL 3 QUARTER) FROM students;
 SELECT name, birthdate, DATE_ADD(birthdate, INTERVAL 4 QUARTER) FROM students;
 
 SELECT name, birthtime, DATE_ADD(birthtime, INTERVAL 20 SECOND) FROM students;
-SELECT name, birthdate, birthtime, DATE_ADD(birthdate, INTERVAL 20 MINUTE) FROM students;
+SELECT name, birthdate, birthtime, DATE_ADD(birthtime, INTERVAL 20 MINUTE) FROM students;
 
 SELECT name, birthdate, birthtime, (birthdate + INTERVAL 1 MONTH) FROM students;
 SELECT name, birthdate, birthtime, (birthdate + INTERVAL 1 MONTH + INTERVAL 10 HOUR) FROM students;

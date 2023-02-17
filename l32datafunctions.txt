@@ -1,0 +1,196 @@
+=> DATE() Function
+# result = 2023-02-11
+SELECT DATE("2023-02-11");
+SELECT DATE("2023-02-11 09:30:40");
+
+----------------------------------------------------------------
+
+=> YEAR() Function
+# result = 2023
+SELECT YEAR("2023-02-11");
+SELECT YEAR("2023-02-11 09:30:40");
+
+=> DAYOFYEAR() Function
+# result = 42
+SELECT DAYOFYEAR("2023-02-11");
+SELECT DAYOFYEAR("2023-02-11 09:30:40");
+
+----------------------------------------------------------------
+
+=> MONTH() Function
+# result = 2
+SELECT MONTH("2023-02-11");
+SELECT MONTH("2023-02-11 09:30:40");
+
+=> MONTHNAME() Function
+# result = February
+SELECT MONTHNAME("2023-02-11");
+SELECT MONTHNAME("2023-02-11 09:30:40");
+
+----------------------------------------------------------------
+
+=> WEEK() Function
+# result = 6 (52 WEEKS in a YEAR)
+SELECT WEEK("2023-02-11");
+SELECT WEEK("2023-02-11 09:30:40");
+
+=> DAYOFWEEK() Function
+# result = 7 (Note Sunday = 1, Monday = 2, Tuesday = 3, Wednesday = 4, Thursday = 5, Friday = 6, Saturday = 7)
+SELECT DAYOFWEEK("2023-02-11");
+SELECT DAYOFWEEK("2023-02-11 09:30:40");
+
+----------------------------------------------------------------
+
+=> DAY() Function
+# result = 11
+SELECT DAY("2023-02-11");
+SELECT DAY("2023-02-11 09:30:40");
+
+=> DAYNAME() Function
+# result = Sunday
+SELECT DAYNAME("2023-02-12");
+SELECT DAYNAME("2023-02-12 09:30:40");
+
+----------------------------------------------------------------
+
+=> HOUR() Function
+# result = 9
+SELECT HOUR("2023-02-12");
+SELECT HOUR("09:30:40");
+SELECT HOUR("2023-02-12 09:30:40");
+
+----------------------------------------------------------------
+
+=> MINUTE() Function
+# result = 30
+SELECT MINUTE("09:30:40");
+SELECT MINUTE("2023-02-12 09:30:40");
+
+----------------------------------------------------------------
+
+=> SECOND() Function
+# result = 40
+SELECT SECOND("09:30:40");
+SELECT SECOND("2023-02-12 09:30:40");
+"
+----------------------------------------------------------------
+
+=> ADDDATE() Function
+# Syntax
+# ADDDATE(date, INTERVAL value addunit);
+
+# result = 2033-02-12
+SELECT ADDDATE("2023-02-12", INTERVAL 10 YEAR);
+
+# result = 2023-12-12
+SELECT ADDDATE("2023-02-12", INTERVAL 10 MONTH);
+
+# result = 2023-02-26
+SELECT ADDDATE("2023-02-12", INTERVAL 2 WEEK);
+
+# result = 2023-02-22
+SELECT ADDDATE("2023-02-12", INTERVAL 10 DAY);
+
+# result = 2023-02-22 19:30:40
+SELECT ADDDATE("2023-02-12 09:30:40", INTERVAL 10 HOUR);
+
+# result = 2023-02-11 23:30:40
+SELECT ADDDATE("2023-02-12 09:30:40", INTERVAL - 10 HOUR);
+
+# result = 2023-02-12 09:50:40
+SELECT ADDDATE("2023-02-12 09:30:40", INTERVAL 20 MINUTE);
+
+# result = 2023-02-12 09:31:00
+SELECT ADDDATE("2023-02-12 09:30:40", INTERVAL 20 SECOND);
+
+----------------------------------------------------------------
+
+=> DATE_ADD() Function
+# Syntax
+# DATE_ADD(date, INTERVAL value addunit);
+
+# result = 2033-02-12
+SELECT DATE_ADD("2023-02-12", INTERVAL 10 YEAR);
+
+# result = 2023-12-12
+SELECT DATE_ADD("2023-02-12", INTERVAL 10 MONTH);
+
+# result = 2023-02-26
+SELECT DATE_ADD("2023-02-12", INTERVAL 2 WEEK);
+
+# result = 2023-02-22
+SELECT DATE_ADD("2023-02-12", INTERVAL 10 DAY);
+
+# result = 2023-02-22 19:30:40
+SELECT DATE_ADD("2023-02-12 09:30:40", INTERVAL 10 HOUR);
+
+# result = 2023-02-11 23:30:40
+SELECT DATE_ADD("2023-02-12 09:30:40", INTERVAL -10 HOUR);
+
+# result = 2023-02-12 09:50:40
+SELECT DATE_ADD("2023-02-12 09:30:40", INTERVAL 20 MINUTE);
+
+# result = 2023-02-12 09:31:00
+SELECT DATE_ADD("2023-02-12 09:30:40", INTERVAL 20 SECOND);
+
+----------------------------------------------------------------
+
+=> SUBDATE() Function
+# Syntax
+# SUBDATE(date, INTERVAL value addunit);
+
+# result = 2013-02-12
+SELECT SUBDATE("2023-02-12", INTERVAL 10 YEAR);
+
+# result = 2022-04-12
+SELECT SUBDATE("2023-02-12", INTERVAL 10 MONTH);
+
+# result = 2023-01-29
+SELECT SUBDATE("2023-02-12", INTERVAL 2 WEEK);
+
+# result = 2023-02-02
+SELECT SUBDATE("2023-02-12", INTERVAL 10 DAY);
+
+# result = 2023-02-12 09:30:40
+SELECT SUBDATE("2023-02-12 09:30:40", INTERVAL 10 HOUR);
+
+# result = 2023-02-12 19:30:40
+SELECT SUBDATE("2023-02-12 09:30:40", INTERVAL - 10 HOUR);
+
+# result = 2023-02-12 09:10:40
+SELECT SUBDATE("2023-02-12 09:30:40", INTERVAL 20 MINUTE);
+
+# result = 2023-02-12 09:30:20
+SELECT SUBDATE("2023-02-12 09:30:40", INTERVAL 20 SECOND);
+
+----------------------------------------------------------------
+
+=> DATE_SUB() Function
+# Syntax
+# DATE_SUB(date, INTERVAL value addunit);
+
+# result = 2013-02-12
+SELECT DATE_SUB("2023-02-12", INTERVAL 10 YEAR);
+
+# result = 2022-04-12
+SELECT DATE_SUB("2023-02-12", INTERVAL 10 MONTH);
+
+# result = 2023-01-29
+SELECT DATE_SUB("2023-02-12", INTERVAL 2 WEEK);
+
+# result = 2023-02-02
+SELECT DATE_SUB("2023-02-12", INTERVAL 10 DAY);
+
+# result = 2023-02-12 09:30:40
+SELECT DATE_SUB("2023-02-12 09:30:40", INTERVAL 10 HOUR);
+
+# result = 2023-02-12 19:30:40
+SELECT DATE_SUB("2023-02-12 09:30:40", INTERVAL -10 HOUR);
+
+# result = 2023-02-12 09:10:40
+SELECT DATE_SUB("2023-02-12 09:30:40", INTERVAL 20 MINUTE);
+
+# result = 2023-02-12 09:30:20
+SELECT DATE_SUB("2023-02-12 09:30:40", INTERVAL 20 SECOND);
+
+----------------------------------------------------------------

@@ -77,7 +77,7 @@ DROP TABLE IF EXISTS items;
 CREATE TABLE IF NOT EXISTS items(
         name VARCHAR(20),
         purchaseprice INT(4) SIGNED,
-        sellprice INT(4) UNSINED,
+        sellprice INT(4) UNSIGNED,
         status BOOL
 )
 
