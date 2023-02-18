@@ -194,3 +194,102 @@ SELECT DATE_SUB("2023-02-12 09:30:40", INTERVAL 20 MINUTE);
 SELECT DATE_SUB("2023-02-12 09:30:40", INTERVAL 20 SECOND);
 
 ----------------------------------------------------------------
+
+=> DATEDIFF(date1, date2);
+#Format => Y-m-d Y/m/ d H:M:S
+
+# result = 8
+SELECT DATEDIFF("2023-02-18", "2023-02-10");
+SELECT DATEDIFF("2023-02-18 09:30:00", "2023-02-10 09:00:00");
+SELECT DATEDIFF("2023-02-18", "2023-02-10") AS "Different Date";
+
+# result = 31
+SELECT DATEDIFF("2023/02/18", "2023/01/18");
+SELECT DATEDIFF("2023/02/18 09:30:00", "2023/01/18 09:00:00");
+
+# result = NULL
+SELECT DATEDIFF("18-02-2022", "10-02-2023");
+
+# result = NULL
+SELECT DATEDIFF("February-10-2023", "February-18-2023");
+
+# result = -8
+SELECT DATEDIFF("2023/02/10", "2023/02/18");
+
+SELECT * FROM students;
+SELECT name, birthdate, DATEDIFF(NOW(), birthdate) FROM students;
+
+----------------------------------------------------------------
+
+=> TIMEDIFF(time1, time2);
+#Format => H:M:S
+
+#result = 00:30:00
+SELECT TIMEDIFF("09:30:00", "09:00:00");
+
+#result = 192:30:00
+SELECT TIMEDIFF("2023-02-18 09:30:00", "2023-02-10 09:00:00");
+
+#result = 24:30:00
+SELECT TIMEDIFF("2023-02-11 09:30:00", "2023-02-10 09:00:00");
+
+----------------------------------------------------------------
+
+=> DATE_FORMAT(date, format)
+
+SELECT DATE_FORMAT(CURDATE(), '%Y-%M-01'); # 2023-February-01
+SELECT DATE_FORMAT(CURDATE(), '%y-%m-01'); # 23-02-01
+SELECT DATE_FORMAT(CURDATE(), '%y/%m/01'); # 23/02/01
+SELECT DATE_FORMAT(CURDATE(), '%y,%m,01'); # 23,02,01
+SELECT DATE_FORMAT(CURDATE(), '%y %m 01'); # 23 02 01
+SELECT DATE_FORMAT(CURDATE(), '%Y%m01'); # 20230201
+
+SELECT DAY(DATE_FORMAT(CURDATE(), '%y-%m-01')); # 1
+SELECT DAY(DATE_FORMAT(CURDATE(), '%y/%m/19')); # 19
+
+SELECT DAY(DATE_FORMAT(CURDATE(), '19-%m-%y')); # wrong 23
+
+=> TIME_FORMAT(time, format)
+
+Format      Description
+%H          Hour (00 to 23)
+%H          Hour (00 to 12)
+%I          Hour (00 to 23)
+
+-----
+
+%i          Minutes (00 to 59)
+
+-----
+
+%S          Seconds (00 to 59)
+%s          Seconds (00 to 59)
+
+-----
+
+%p          AM or PM
+
+-----
+
+%r          Time in 12 hour AM or PM format (hh:mm:ss AM/PM)
+
+-----
+
+%T           Time in 24 hour format (hh:mm:ss)
+
+-----
+
+SELECT TIME_FORMAT('13:30:40', '%H:%i:%s'); # 13:30:40
+SELECT TIME_FORMAT('13:30:40', '%h:%i:%s'); # 01:30:40
+SELECT TIME_FORMAT('13:30:40', '%I:%i:%s'); # 01:30:40
+SELECT TIME_FORMAT('13:30:40', '%I:%i:%S'); # 01:30:40
+
+SELECT TIME_FORMAT('13:30:40', '%H:%i:%s %p'); # 13:30:40 PM
+SELECT TIME_FORMAT('13:30:40', '%h:%i:%s %p'); # 01:30:40 PM
+SELECT TIME_FORMAT('13:30:40', '%I:%i:%s %p'); # 01:30:40 PM
+
+SELECT TIME_FORMAT('13:30:40', '%r'); # 01:30:40 PM
+SELECT TIME_FORMAT('09:30:40', '%r'); # 09:30:40 PM
+
+SELECT TIME_FORMAT('13:30:40', '%T'); # 13:30:40
+SELECT TIME_FORMAT('09:30:40', '%T'); # 09:30:40
