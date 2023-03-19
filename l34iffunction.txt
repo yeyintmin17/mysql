@@ -1,0 +1,175 @@
+=> IF FUNCTION
+
+# Syntax
+IF(condition, true_value, false_value);
+
+SELECT IF(100 > 20, "TRUE", "FALSE");
+SELECT IF(100 < 20, "TRUE", "FALSE");
+
+SELECT * FROM customers;
+
+SELECT firstname, lastname, age, gender, age, IF(age >= 35, "Elder", "Young") FROM customers;
+SELECT firstname, lastname, age, gender, age, IF(age >= 35, "Elder", "Young") AS "age verify" FROM customers;
+
+----------------------------------------------------------------
+
+=> TRUNCATE() Function
+
+# Syntax
+TRUNCATE(number, decimals);
+
+# result = 123.456
+SELECT TRUNCATE(123.456, 3);
+
+# result = 123.45600
+SELECT TRUNCATE(123.456, 5);
+
+# result = 123.45
+SELECT TRUNCATE(123.456, 2);
+
+# result = 123.34
+SELECT TRUNCATE(123.346, 2);
+
+# result = 123.4
+SELECT TRUNCATE(123.456, 1);
+
+# result = 123.3
+SELECT TRUNCATE(123.346, 1);
+
+# result = 123
+SELECT TRUNCATE(123.456, 0);
+SELECT TRUNCATE(123.346, 0);
+
+SELECT * FROM items;
+SELECT name, price, TRUNCATE(price, 1) FROM items;
+SELECT name, price, TRUNCATE(price, 0) AS "integer" FROM items;
+
+----------------------------------------------------------------
+
+=> ROUND() Function
+
+# Syntax
+ROUND(number, decimals);
+
+# result = 123.342
+SELECT ROUND(123.342, 3);
+
+# result = 123.34200
+SELECT ROUND(123.342, 5);
+
+# result = 123.35
+SELECT ROUND(123.346, 2);
+
+# result = 123.3
+SELECT ROUND(123.346, 1);
+
+# result = 123.4
+SELECT ROUND(123.356, 1);
+
+# result = 123.35
+SELECT ROUND(123.346, 2);
+
+# result = 123.3
+SELECT ROUND(123.346, 1);
+
+# result = 123.4
+SELECT ROUND(123.356, 1);
+
+# result = 123.35
+SELECT ROUND(123.346, 2);
+
+# result = 123
+SELECT ROUND(123.346, 0);
+
+# result = 124
+SELECT ROUND(123.678, 0);
+
+SELECT name, price, ROUND(price, 1) FROM items;
+SELECT name, price, ROUND(price, 0) AS "integer" FROM items;
+
+----------------------------------------------------------------
+
+=> CEIL() / CEILING() Function
+
+# Syntax
+CEIL(number)
+CEILING(number)
+
+# result = 124
+SELECT CEIL(123.342);
+SELECT CEILING(123.342);
+SELECT CEIL(123.567);
+SELECT CEILING(123.567);
+
+# result = 123
+SELECT CEILING(123);
+
+SELECT name, price, CEIL(price) FROM items;
+SELECT name, price, CEILING(price) AS "integer" FROM items;
+
+----------------------------------------------------------------
+
+=> FLOOR() Function
+
+# Syntax
+FLOOR(number)
+
+# result = 123
+SELECT FLOOR(123.342);
+SELECT FLOOR(123.567);
+
+SELECT name, price, FLOOR(price) AS 'integer' FROM items;
+
+----------------------------------------------------------------
+
+=> ABS() Function
+
+# Syntax
+ABS(number)
+
+# result = 123.342
+SELECT ABS(-123.342);
+
+# result = 123.567
+SELECT ABS(-123.567);
+
+# result = 123.567
+SELECT ABS(123.567);
+
+----------------------------------------------------------------
+
+=> SQRT() Function
+
+# Syntax
+SQRT(number)
+
+SELECT SQRT(49); # 7
+SELECT SQRT(81); # 9
+
+----------------------------------------------------------------
+
+=> POW() Function
+
+# Syntax
+POW(base, power)
+
+SELECT POW(10, 2); # 100
+SELECT POW(4, 3); # 64
+SELECT POW(6, 3); # 216
+
+----------------------------------------------------------------
+
+=> SIGN() Function
+
+# Syntax
+SIGN(number)
+
+if number > 0           it return 1
+if number < 0           it return -1
+if number = 0           it return 1
+
+SELECT SIGN(500); # 1
+SELECT SIGN(-500); # -1
+SELECT SIGN(0); # 0
+
+----------------------------------------------------------------

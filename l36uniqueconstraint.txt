@@ -1,0 +1,261 @@
+=> Constraints
+PRIMARY KEY
+FOREIGN KEY
+NOT NULL
+UNIQUE
+DEFAULT 
+CHECK
+
+=> UNIQUE Constraint
+
+# Syntax ( Single Column )
+
+CREATE TABLE tablename(
+    column1 datatype,
+    column2 datatype UNIQUE,
+    column3 datatype,
+    .....
+);
+
+# Syntax ( Multi Column )
+
+CREATE TABLE tablename(
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+    .....
+
+    UNIQUE(column1, column2)
+);
+
+----------------------------------------------------------------
+
+=> EXERCISE ( Single )
+
+CREATE TABLE IF NOT EXISTS countries(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE,
+    capital VARCHAR(50) NOT NULL,
+    currencyname VARCHAR(30),
+    isocode VARCHAR(10)
+);
+
+DESC countries;
+SHOW INDEX FROM countries;
+
+=> DROP UNIQUE KEY
+ALTER TABLE countries DROP INDEX name;
+
+DESC countries;
+SHOW INDEX FROM countries;
+
+DROP TABLE IF EXISTS countries;
+
+CREATE TABLE IF NOT EXISTS countries(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    capital VARCHAR(50) NOT NULL,
+    currencyname VARCHAR(30),
+    isocode VARCHAR(10),
+    UNIQUE(name)
+);
+
+DESC countries;
+SHOW INDEX FROM countries;
+SHOW INDEX IN countries;
+
+INSERT INTO countries (name, capital, currencyname, isocode)
+VALUES ('myanmar', 'naypyitaw', 'myanmar kyat', 'mmk'),
+    ('thailand', 'bangkok', 'thai baht', 'thb'),
+    ('indonesia', 'jakata', 'indonesia rupiee', 'idr'),
+    ('srilanka', 'colombo', 'srilanka rupee', 'lkr');
+
+SELECT * FROM countries;
+
+# error
+INSERT INTO countries (name, capital, currencyname, isocode)
+VALUES ('myanmar', 'yangon', 'burmese kyat', 'mmk');
+
+# error
+INSERT INTO countries (name, capital, currencyname, isocode)
+VALUES ('Myanmar', 'yangon', 'burmese kyat', 'mmk');
+
+SELECT * FROM countries;
+
+# error
+UPDATE countries SET name="Thailand"
+WHERE id = 4;
+
+INSERT INTO countries (name, capital, currencyname, isocode)
+VALUES ('malaysica', 'kuala lumpur', 'malaysian ringgit', 'mys');
+
+SELECT * FROM countries;
+
+----------------------------------------------------------------
+
+=> EXERCISE ( Multi )
+
+CREATE TABLE IF NOT EXISTS cashiers(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) UNIQUE
+);
+
+DESC cashiers;
+SHOW INDEX FROM cashiers;
+
+=> DROP UNIQUE KEY
+ALTER TABLE cashiers DROP INDEX email;
+ALTER TABLE cashiers DROP INDEX phone;
+
+DESC cashiers;
+SHOW INDEX FROM cashiers;
+
+DROP TABLE IF EXISTS cashiers;
+
+CREATE TABLE IF NOT EXISTS cashiers(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) UNIQUE
+);
+
+INSERT INTO cashiers(name, email, password, phone)
+VALUES ('su su', 'susu@gmail.com', 12345, '0911111'),
+    ('yu yu', 'yuyu@gmail.com', 12345, '0922222'),
+    ('hla hla', 'hlahla@gmail.com', 12345, '0933333'),
+    ('tun tun', 'tuntun@gmail.com', 12345, '0944444');
+
+SELECT * FROM cashiers;
+
+# error = susu@gmail.com already in record
+INSERT INTO cashiers(name, email, password, phone)
+VALUES ('ma ma', 'susu@gmail.com', 12345, '0955555');
+
+# error = 0944444 already in record
+INSERT INTO cashiers(name, email, password, phone)
+VALUES ('ma ma', 'mama@gmail.com', 12345, '0944444');
+
+# error = yuyu@gmail.com/0933333 already in record
+INSERT INTO cashiers(name, email, password, phone)
+VALUES ('ma ma', 'yuyu@gmail.com', 12345, '0933333');
+
+ALTER TABLE cashiers DROP INDEX phone;
+SHOW INDEX FROM cashiers;
+
+# can 
+INSERT INTO cashiers(name, email, password, phone)
+VALUES ('ma ma', 'mama@gmail.com', 12345, '0933333');
+
+SELECT * FROM cashiers;
+
+----------------------------------------------------------------
+
+=> UNIQUE with Constraint
+
+CREATE TABLE IF NOT EXISTS accountants(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    phone VARCHAR(15),
+    UNIQUE(email, phone)
+);
+
+DESC accountants;
+SHOW INDEX FROM accountants;
+
+=> DROP UNIQUE KEY
+ALTER TABLE accountants DROP INDEX phone; # err
+ALTER TABLE accountants DROP INDEX email; # can
+
+DROP TABLE IF EXISTS accountants;
+
+INSERT INTO accountants(name, email, password, phone)
+VALUES ('su su', 'susu@gmail.com', 12345, '0911111'),
+    ('yu yu', 'yuyu@gmail.com', 12345, '0922222'),
+    ('hla hla', 'hlahla@gmail.com', 12345, '0933333'),
+    ('tun tun', 'tuntun@gmail.com', 12345, '0944444');
+
+SELECT * FROM accountants;    
+
+# can susu@gmail.com
+INSERT INTO accountants(name, email, password, phone)
+VALUES ('ma ma', 'susu@gmail.com', 12345, '0955555');
+
+# can 0944444
+INSERT INTO accountants(name, email, password, phone)
+VALUES ('ma ma', 'mama@gmail.com', 12345, '0944444');
+
+# can 
+INSERT INTO accountants(name, email, password, phone)
+VALUES ('ma ma', 'yuyu@gmail.com', 12345, '0933333');
+
+# err tuntun@gmail.com / 0944444 already in record
+INSERT INTO accountants(name, email, password, phone)
+VALUES ('ma ma', 'tuntun@gmail.com', 12345, '0944444');
+
+# err yuyu@gmail.com / 0933333 already in record
+INSERT INTO accountants(name, email, password, phone)
+VALUES ('ma ma', 'yuyu@gmail.com', 12345, '0933333');
+
+SELECT * FROM accountants;
+
+
+
+CREATE TABLE IF NOT EXISTS financeofficers(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    phone VARCHAR(15),
+    UNIQUE(name),
+    CONSTRAINT uc_email_phone UNIQUE(email, phone)
+);
+
+DESC financeofficers;
+SHOW INDEX FROM financeofficers;
+
+=> DROP UNIQUE KEY
+ALTER TABLE financeofficers DROP INDEX phone; # err
+ALTER TABLE financeofficers DROP INDEX email; # err
+ALTER TABLE financeofficers DROP INDEX uc_email_phone; # can
+
+DROP TABLE IF EXISTS financeofficers;
+
+CREATE TABLE IF NOT EXISTS financeofficers(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    phone VARCHAR(15),
+    UNIQUE(name),
+    CONSTRAINT uc_email_phone UNIQUE(email, phone)
+);
+
+SELECT * FROM financeofficers;    
+
+# can
+INSERT INTO financeofficers(name, email, password, phone)
+VALUES ('ma ma', 'susu@gmail.com', 12345, '0955555');
+
+# can
+INSERT INTO financeofficers(name, email, password, phone)
+VALUES ('ni ma lay', 'mama@gmail.com', 12345, '0944444');
+
+# can 
+INSERT INTO financeofficers(name, email, password, phone)
+VALUES ('friend', 'yuyu@gmail.com', 12345, '0933333');
+
+# err tuntun@gmail.com / 0944444 already in record
+INSERT INTO financeofficers(name, email, password, phone)
+VALUES ('ko gyi', 'tuntun@gmail.com', 12345, '0944444');
+
+# err yuyu@gmail.com / 0933333 already in record
+INSERT INTO financeofficers(name, email, password, phone)
+VALUES ('maung lay', 'yuyu@gmail.com', 12345, '0933333');
+
+SELECT * FROM financeofficers;
