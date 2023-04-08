@@ -1,0 +1,106 @@
+CREATE TABLE IF NOT EXISTS buyers(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(20),
+    lastname VARCHAR(20),
+    email VARCHAR(50)
+);
+
+DESC buyers;
+
+INSERT INTO buyers (firstname, lastname, email)
+VALUES ('aung', 'aung', 'aungaung@gmail.com'),
+    ('maung', 'maung', 'maungmaung@gmail.com'),
+    ('kyaw', 'kyaw', 'kyawkyaw@gmail.com'),
+    ('zaw', 'zaw', 'zawzaw@gmail.com'),
+    ('su', 'su', 'susu@gmail.com'),
+    ('aye', 'aye', 'ayeaye@gmail.com'),
+    ('yu', 'yu', 'yuyu@gmail.com');
+
+SELECT * FROM buyers;
+
+CREATE TABLE IF NOT EXISTS orders(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    orderdate DATE,
+    amount DECIMAL(10, 2),
+    buyer_id INT,
+    FOREIGN KEY(buyer_id) REFERENCES buyers(id)
+);
+
+DESC orders;
+SHOW INDEX FROM orders;
+
+INSERT INTO orders(orderdate, amount, buyer_id)
+VALUES ('2023/03/10', 99.99, 1),
+    ('2023/03/10', 75.35, 1),
+    ('2023/03/15', 100.25, 4),
+    ('2023/03/30', 20.30, 2),
+    ('2023/03/31', 50, 5);
+
+SELECT * FROM orders;
+
+=> Method 1 (IMPLICIT INNER JOIN)
+
+SELECT * FROM buyers, orders
+WHERE buyers.id = orders.buyer_id;
+
+SELECT * FROM buyers, orders
+WHERE orders.buyer_id = buyers.id;
+
+SELECT * FROM orders, buyers
+WHERE orders.buyer_id = buyers.id;
+
+SELECT * FROM orders, buyers
+WHERE buyers.id = orders.buyer_id;
+
+=> Method 2 (EXPLICIT INNER JOIN)
+
+SELECT * FROM buyers
+JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT * FROM buyers
+JOIN orders
+ON orders.buyer_id = buyers.id;
+
+SELECT * FROM orders
+JOIN buyers
+ON buyers.id = orders.buyer_id;
+
+SELECT * FROM orders
+JOIN buyers
+ON orders.buyer_id = buyers.id;
+
+* Wrong = ARBITRARY JOIN ( Don't do this, never & never )
+SELECT * FROM buyers
+JOIN orders
+ON buyers.id = orders.buyer_id;
+
+=> Method 3
+
+SELECT * FROM buyers
+INNER JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT * FROM buyers
+INNER JOIN orders
+ON orders.buyer_id = buyers.id;
+
+SELECT * FROM orders
+INNER JOIN buyers
+ON buyers.id = orders.buyer_id;
+
+SELECT * FROM orders
+INNER JOIN buyers
+ON orders.buyer_id = buyers.id;
+
+---------------------------------------------
+
+SELECT firstname, lastname, orderdate, amount
+FROM buyers
+INNER JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT firstname, lastname, orderdate, amount
+FROM orders
+INNER JOIN buyers
+ON orders.buyer_id = buyers.id;

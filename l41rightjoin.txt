@@ -1,0 +1,59 @@
+=> RIGHT JOIN
+
+= Syntax
+
+SELECT columns FROM table1
+RIGHT JOIN table2
+ON table1.column = table2.column;
+
+---------------------------------------------
+
+# LEFT JOIN
+
+SELECT * FROM buyers
+LEFT JOIN orders
+ON buyers.id = orders.buyer_id;
+
+# RIGHT JOIN
+
+SELECT * FROM buyers
+RIGHT JOIN orders
+ON buyers.id = orders.buyer_id;
+
+---------------------------------------------
+
+# LEFT JOIN
+
+SELECT * FROM orders
+LEFT JOIN buyers
+ON orders.buyer_id = buyers.id;
+
+# RIGHT JOIN
+
+SELECT * FROM orders
+RIGHT JOIN buyers
+ON orders.buyer_id = buyers.id;
+
+---------------------------------------------
+
+SELECT firstname, lastname, orderdate, amount
+FROM buyers
+LEFT JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT firstname, lastname, orderdate, amount
+FROM buyers
+RIGHT JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT firstname, lastname, orderdate, amount
+FROM orders
+LEFT JOIN buyers
+ON orders.buyer_id = buyers.id;
+
+SELECT firstname, lastname, orderdate, amount
+FROM orders
+RIGHT JOIN buyers
+ON orders.buyer_id = buyers.id;
+
+---------------------------------------------

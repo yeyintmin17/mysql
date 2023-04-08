@@ -204,8 +204,6 @@ VALUES ('ma ma', 'yuyu@gmail.com', 12345, '0933333');
 
 SELECT * FROM accountants;
 
-
-
 CREATE TABLE IF NOT EXISTS financeofficers(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,

@@ -1,0 +1,91 @@
+1. INNER JOIN ( or simple join )
+2. LEFT OUTER JOIN ( or LEFT JOIN )
+3. RIGHT OUTER JOIN ( or RIGHT JOIN )
+4. FULL JOIN
+
+Note: Relation Basic Note -> Two Tables Two Entitites
+
+1. One to One Relationship
+2. One to Many Relationship
+3. Many to Many Relationship
+
+----------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS buyers(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(20),
+    lastname VARCHAR(20),
+    email VARCHAR(50)
+);
+
+DESC buyers;
+
+INSERT INTO buyers (firstname, lastname, email)
+VALUES ('aung', 'aung', 'aungaung@gmail.com'),
+    ('maung', 'maung', 'maungmaung@gmail.com'),
+    ('kyaw', 'kyaw', 'kyawkyaw@gmail.com'),
+    ('zaw', 'zaw', 'zawzaw@gmail.com'),
+    ('su', 'su', 'susu@gmail.com'),
+    ('aye', 'aye', 'ayeaye@gmail.com'),
+    ('yu', 'yu', 'yuyu@gmail.com');
+
+SELECT * FROM buyers;
+
+CREATE TABLE IF NOT EXISTS orders(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    orderdate DATE,
+    amount DECIMAL(10, 2),
+    buyer_id INT
+);
+
+DESC orders;
+SHOW INDEX FROM orders;
+
+INSERT INTO orders(orderdate, amount, buyer_id)
+VALUES ('2023/03/10', 99.99, 1),
+    ('2023/03/10', 75.35, 1),
+    ('2023/03/15', 100.25, 4),
+    ('2023/03/30', 20.30, 2),
+    ('2023/03/31', 50, 5);
+
+SELECT * FROM orders;
+
+SELECT * FROM buyers WHERE lastname = "aung";
+SELECT * FROM buyers WHERE id = 1;
+
+SELECT * FROM orders WHERE buyer_id = 1;
+
+SELECT * FROM orders WHERE buyer_id = (
+    SELECT id FROM buyers WHERE lastname = "maung"
+);
+
+INSERT INTO buyers (firstname, lastname, email)
+VALUE ('htoo', 'aung', 'htooaung@gmail.com');
+
+SELECT * FROM buyers;
+
+SELECT * FROM orders WHERE buyer_id = (
+    SELECT id FROM buyers WHERE email = "aungaung@gmail.com"
+);
+
+# err > Subqueyr returns more than 1 row
+SELECT * FROM orders WHERE buyer_id = (
+    SELECT id FROM buyers WHERE lastname = "aung"
+);
+
+----------------------------------------------------------------
+
+=> CROSS Join
+
+SELECT * FROM buyers;
+SELECT * FROM orders;
+
+SELECT * FROM buyers, orders;
+SELECT * FROM orders, buyers;
+
+SELECT * FROM buyers
+CROSS JOIN orders
+ON buyers.id = orders.buyer_id;
+
+DROP TABLE IF EXISTS orders;
+DROP TABLE IF EXISTS buyers;
