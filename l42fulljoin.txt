@@ -1,0 +1,73 @@
+=> FULL JOIN or Union JOIN
+
+= Syntax
+
+SELECT columns FROM table1
+LEFT JOIN table2 
+ON table1.column = table2.column
+UNION
+SELECT columns FROM table1
+RIGHT JOIN table2 
+ON table1.column = table2.column;
+
+= LEFT JOIN
+
+SELECT * FROM buyers
+LEFT JOIN orders
+ON buyers.id = orders.buyer_id;
+
+= RIGHT JOIN
+
+SELECT * FROM buyers
+RIGHT JOIN orders
+ON buyers.id = orders.buyer_id;
+
+= FULL JOIN
+
+SELECT * FROM buyers
+LEFT JOIN orders
+ON buyers.id = orders.buyer_id
+UNION
+SELECT * FROM buyers
+RIGHT JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT * FROM buyers
+LEFT OUTER JOIN orders
+ON buyers.id = orders.buyer_id
+UNION
+SELECT * FROM buyers
+RIGHT OUTER JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT firstname, lastname, orderdate, amount FROM buyers
+LEFT OUTER JOIN orders
+ON buyers.id = orders.buyer_id
+UNION
+SELECT firstname, lastname, orderdate, amount FROM buyers
+RIGHT OUTER JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT buyers.firstname, buyers.lastname, orders.orderdate, orders.amount FROM buyers
+LEFT OUTER JOIN orders
+ON buyers.id = orders.buyer_id
+UNION
+SELECT buyers.firstname, buyers.lastname, orders.orderdate, orders.amount FROM buyers
+RIGHT OUTER JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT * FROM buyers
+LEFT JOIN orders
+ON buyers.id = orders.buyer_id
+UNION
+SELECT * FROM buyers
+RIGHT JOIN orders
+ON buyers.id = orders.buyer_id;
+
+SELECT * FROM buyers
+LEFT JOIN orders
+ON buyers.id = orders.buyer_id
+UNION ALL
+SELECT * FROM buyers
+RIGHT JOIN orders
+ON buyers.id = orders.buyer_id;

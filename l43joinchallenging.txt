@@ -1,0 +1,43 @@
+CREATE TABLE IF NOT EXISTS vipmembers(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(20),
+    lastname VARCHAR(20),
+    status INT DEFAULT 1
+);
+
+DESC vipmembers;
+
+INSERT INTO vipmembers (firstname, lastname)
+VALUES ('aung', 'aung'),
+    ('maung', 'maung'),
+    ('kyaw', 'kyaw'),
+    ('zaw', 'zaw'),
+    ('su', 'su'),
+    ('aye', 'aye'),
+    ('yu', 'yu');
+
+INSERT INTO vipmembers (firstname, lastname, status)
+VALUES ('thu', 'thu', 2),
+    ('tun', 'tun', 2),
+    ('yu', 'ya', 2);
+
+SELECT * FROM vipmembers;
+
+CREATE TABLE IF NOT EXISTS vipmbphones(
+    id INT AUTO_INCREMENT,
+    phone VARCHAR(15) NOT NULL,
+    vipmember_id INT,
+    PRIMARY KEY(id),
+    FOREIGN KEY(vipmember_id) REFERENCES vipmembers(id) ON DELETE CASCADE
+);
+
+DESC vipmbphones;
+
+INSERT INTO vipmbphones(phone, vipmember_id)
+VALUES ('09123456', 1),
+    ('09123457', 3),
+    ('09123458', 2),
+    ('09123459', 5),
+    ('09123455', 4);
+
+SELECT * FROM vipmbphones;
