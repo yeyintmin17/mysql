@@ -1,0 +1,109 @@
+=> CASE Statement
+
+= Syntax
+
+SELECT column1, column2, column3, ...,
+    CASE
+        WHEN year > 2000 THEN ""
+        ELSE ""
+    END AS ...
+FROM tablename;
+
+SELECT column1, column2, column3, ...,
+    CASE
+        WHEN year > 2000 THEN ""
+        WHEN year < 2000 THEN ""
+        ELSE ""
+    END AS ...
+FROM tablename;
+
+SELECT firstname, lastname, age, amount, city,
+    CASE
+        WHEN age < 18 THEN "young"
+        ELSE "elder"
+    END AS "age verify"
+FROM customers;
+
+SELECT firstname, lastname, age, amount, city,
+    CASE
+        WHEN age < 18 THEN "young"
+        WHEN age < 30 THEN "elder"
+        ELSE "Retired"
+    END AS "age verify"
+FROM customers;
+
+SELECT firstname, lastname, age, amount, city,
+    CASE
+        WHEN age < 18 THEN "young"
+        WHEN age >= 35 THEN "manager"
+        ELSE "elder"
+    END AS "age verify"
+FROM customers;
+
+SELECT firstname, lastnamem age , amount, city,
+    CASE
+        WHEN age < 18 THEN "young"
+        WHEN age >= 18 AND age <= 60 THEN "elder"
+        ELSE "retired"
+    END AS "age verify"
+FROM customers;
+
+= Exercise
+
+CREATE TABLE IF NOT EXISTS handsets(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(100),
+    sellprice DECIMAL(10, 2),
+    stock INT,
+    PRIMARY KEY(id)
+);
+
+DESC handsets;
+
+INSERT INTO handsets (name, sellprice, stock)
+VALUES ('samsung note 10', 1500000, 35),
+    ('samsung s9', 900000, 35),
+    ('samsung a4', 500000, 10),
+    ('vivo 12', 500000, 40),
+    ('vivo v6', 800000, 20),
+    ('oppo f10', 800000, 18),
+    ('oppo d12', 1200000, 30),
+    ('sony e9', 500000, 50),
+    ('nokia', 900000, 25),
+    ('nokia l5', 300000, 8),
+    ('mi note10', 900000, 0);
+
+SELECT * FROM handsets;
+
+SELECT name, sellprice, stock,
+    CASE
+        WHEN stock > 0 AND stock < 11 THEN "max order 8"
+        WHEN stock > 10 AND stock < 21 THEN "max order 17"
+        WHEN stock > 20 AND stock < 31 THEN "max order 27"
+        WHEN stock > 30 AND stock < 41 THEN "max order 37"
+        WHEN stock > 40 AND stock < 51 THEN "up to 45 available"
+        ELSE "out of stock"
+    END AS "stock control"
+FROM handsets;
+
+SELECT name, sellprice, stock,
+    CASE
+        WHEN stock BETWEEN 1 AND 10 THEN "max order 8"
+        WHEN stock BETWEEN 11 AND 20 THEN "max order 17"
+        WHEN stock BETWEEN 21 AND 30 THEN "max order 27"
+        WHEN stock BETWEEN 31 AND 40 THEN "max order 37"
+        WHEN stock BETWEEN 41 AND 50 THEN "up to 45 available"
+        ELSE "out of stock"
+    END AS "stock control"
+FROM handsets;
+
+SELECT name, sellprice, stock,
+    CASE
+        WHEN stock BETWEEN 1 AND 10 THEN "*"
+        WHEN stock BETWEEN 11 AND 20 THEN "**"
+        WHEN stock BETWEEN 21 AND 30 THEN "***"
+        WHEN stock BETWEEN 31 AND 40 THEN "****"
+        WHEN stock BETWEEN 41 AND 50 THEN "*****"
+        ELSE "zero stock"
+    END AS "stock control"
+FROM handsets;

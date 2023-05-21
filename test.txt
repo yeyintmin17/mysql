@@ -1,0 +1,40 @@
+CREATE TABLE IF NOT EXISTS buyers(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
+    age INT,
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS orders(
+    id INT NOT NULL AUTO_INCREMENT,
+    orderdate DATETIME DEFAULT NOW() ON UPDATE NOW(),
+    amount DECIMAL(10, 2),
+    buyer_id INT,
+
+    PRIMARY KEY(id),
+    FOREIGN KEY(buyer_id) REFERENCES buyers(id) ON UPDATE CASCADE
+);
+
+DESC buyers;
+DESC orders;
+
+DROP TABLE IF EXISTS orders;
+
+INSERT INTO buyers (name, age)
+VALUES ('aye thaung', 31),
+    ('aung lone', 18),
+    ('toe kyaw', 27);
+
+INSERT INTO orders (amount, buyer_id)
+VALUES (10.2, 1),
+    (9.2, 7),
+    (8, 8);
+
+SELECT * FROM buyers;
+SELECT * FROM orders;
+
+DELETE FROM buyers WHERE id = 2;
+DELETE FROM orders WHERE buyer_id = 3;
+
+UPDATE buyers SET name = "toe lone" WHERE id = 7;
+UPDATE orders SET amount = 3.1 WHERE buyer_id = 1;
